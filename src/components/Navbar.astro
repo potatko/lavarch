@@ -1,0 +1,311 @@
+---
+import Logo from "../assets/hlavne_logo-transparent-black 1.png";
+import { Image } from 'astro:assets';
+import hamburger from "../assets/hamburger.svg";
+import cross from "../assets/cross.svg";
+const { title, currentPage } = Astro.props;
+
+
+---
+
+<script>
+	var isMenuOpened = false;
+	
+	function openMenu() {
+		isMenuOpened = !isMenuOpened;
+		console.log(isMenuOpened);
+		var cross = "cross.svg";
+		var hamburger = "hamburger.svg";
+		const hamburgerIcon = document.getElementById('hamburger-icon') as HTMLImageElement;
+		const logo = document.getElementById('logo');
+		const progressBar = document.getElementById('progressBar');
+		if (hamburgerIcon && logo) {
+			if (isMenuOpened) {
+				document.body.classList.add('overflow-hidden');
+				if (progressBar) {
+					progressBar.classList.add('hidden');
+				}
+				logo.classList.add('hidden');
+				hamburgerIcon.src = cross;
+			} else {
+				document.body.classList.remove('overflow-hidden');
+				if (progressBar) {
+					progressBar.classList.remove('hidden');
+				}
+				logo.classList.remove('hidden');
+				hamburgerIcon.src = hamburger;
+			}
+		}
+	}
+
+const buttons = document.querySelectorAll('[data-collapse-toggle]');
+buttons.forEach((button) => {
+    button.addEventListener('click', () => openMenu());
+  });
+</script>
+
+<nav class="bg-white sticky top-0 z-50">
+	<div
+		class="max-w-[100%] flex flex-wrap items-center justify-between mx-auto pt-4 p-0 md:p-4"
+	>
+		<a href="#" class="flex items-center space-x-3 rtl:space-x-reverse mobileLogo" id="logo">
+			<Image src={Logo} alt="Logo" />
+		</a>
+		<div
+			class="flex flex-wrap items-center  justify-between md:w-auto lg:gap-20"
+		>
+			<div
+				class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse"
+			>
+				<div
+					class="hidden  lg:inline-flex  items-center justify-center gap-2.5 px-7 py-2.5 bg-[#1E1E1E] text-white font-dmSans text-[1.25rem] font-light leading-[1.5rem] uppercase"
+				>
+					KONTAKT
+				</div>
+				<button
+					data-collapse-toggle="navbar-cta"
+					type="button"
+					class="inline-flex a1114fixlinks items-center p-2 -mr-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100  dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+					aria-controls="navbar-cta"
+					aria-expanded="false"
+                    onclick="openMenu()"
+				>
+					<span class="sr-only">Open main menu</span>
+					<div id="hamburger">
+						<img src={hamburger.src} id="hamburger-icon" alt="Menu" />
+					</div>
+					
+				</button>
+			</div>
+			<div
+				class="items-center justify-between hidden w-full lg:flex md:w-auto md:order-1  centerMobile"
+				id="navbar-cta"
+			>
+			<ul class="linksMobile flex flex-col font-medium p-4 md:p-0 mt-4  rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700 xl:ml-32">
+				<li>
+					<a href="/projekty" class={`block py-2 px-3 md:p-2 lg:p-4 d1114fixlinks ${currentPage === 'projekty' ? 'active-page' : 'hover-progress'}`} aria-current="page">
+						<div class="text-[#1E1E1E] linksMobileText font-dmSans text-[1.25rem] font-light leading-[1.875rem] uppercase">
+							PROJEKTY
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="/sluzby" class={`block py-2 px-3 md:p-2 lg:p-4 d1114fixlinks ${currentPage === 'sluzby' ? 'active-page' : 'hover-progress'}`} aria-current="page">
+						<div class="text-[#1E1E1E] linksMobileText font-dmSans text-[1.25rem] font-light leading-[1.875rem] uppercase">
+							SLUŽBY
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="/about" class={`block py-2 px-3 md:p-2 lg:p-4 d1114fixlinks ${currentPage === 'onas' ? 'active-page' : 'hover-progress'}`} aria-current="page">
+						<div class="text-[#1E1E1E] linksMobileText font-dmSans text-[1.25rem] font-light leading-[1.875rem] uppercase">
+							O NÁS
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="/blog" class={`block py-2 px-3 md:p-2 lg:p-4 d1114fixlinks ${currentPage === 'blog' ? 'active-page' : 'hover-progress'}`} aria-current="page">
+						<div class="text-[#1E1E1E] linksMobileText font-dmSans text-[1.25rem] font-light leading-[1.875rem] uppercase">
+							BLOG
+						</div>
+					</a>
+				</li>
+			</ul>
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+	<div
+	class="text-[#1E1E1E] navigationHeader font-dmSans text-[3.5rem] font-bold leading-[5.25rem] tracking-[-0.066rem] uppercase mt-8"
+	>
+	{title}
+	</div>
+	<div class="sticky top-25 z-50" id="progressBar">
+		<div class="h-0.5 bg-[#E9E5E5] mt-4 lg:mt-20"></div>
+		<div class="h-[3px] bg-[#1E1E1E] -mt-0.5 progress left-0" ></div>
+	</div>
+
+
+
+
+<style>
+	.active-page {
+        position: relative ;
+        display: inline-block ;
+        
+    }
+
+	.active-page::after {
+        content: '';
+        position: absolute ;
+        left: 50%;
+        bottom: 0;
+        width: 100%;
+        height: 2px; /* Adjust based on your underline thickness */
+        background-color: #1E1E1E;
+        transform: translateX(-50%);
+        transform-origin: center;
+    }
+
+	@media (max-width: 1114px) {
+		.active-page::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 0.5rem;
+        width: 100%;
+        height: 2px; /* Adjust based on your underline thickness */
+        background-color: #1E1E1E;
+        transform: translateX(-50%);
+        transform-origin: center;
+    }
+	.d1114fixlinks {
+		padding: 0.4rem !important;
+	}
+
+	.a1114fixlinks {
+		position: absolute !important;
+		top: 1.8rem;
+		right: 2rem;
+	}
+	
+}
+@media (min-width: 1114px) {
+	.active-page::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 1rem;
+        width: 100%;
+        height: 2px; /* Adjust based on your underline thickness */
+        background-color: #1E1E1E;
+        transform: translateX(-50%);
+        transform-origin: center;
+    }
+}
+   
+@media (max-width: 1023px) {
+	.linksMobile {
+		
+		width: 100vw;
+		height: 100vh;
+		background: white;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		overflow: hidden;
+		margin-left: -3rem;
+		z-index: 100;
+	}
+
+	.linksMobileText{
+		color: #000;
+font-family: "DM Sans";
+font-size: 36px;
+font-style: normal;
+font-weight: 300;
+line-height: 150%; /* 54px */
+text-transform: uppercase;
+	}
+	
+	.centerMobile{
+		justify-content: center;
+		align-items: center;
+	}
+	
+	
+}
+
+
+
+
+    .active-content {
+        color: #1e1e1e;
+        font-family: "DM Sans";
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%; /* 30px */
+        letter-spacing: -0.38px;
+        text-decoration-line: underline;
+        text-decoration-style: solid;
+        text-decoration-skip-ink: auto;
+        text-decoration-thickness: auto;
+        text-underline-offset: 45%; /* 9px */
+        text-underline-position: from-font;
+    }
+
+	@keyframes scaleProgress {
+  0% {
+    transform: scaleX(0.1);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.progress {
+  animation-timeline: scroll(root);
+  animation-name: scaleProgress;
+  animation-duration: auto;
+  animation-timing-function: linear;
+  transform-origin: 0 50%;
+}
+
+@keyframes hoverProgress {
+  0% {
+    transform: scaleX(0.1);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.hover-progress {
+        position: relative;
+        display: inline-block;
+    }
+
+    .hover-progress::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 1rem; /* Adjust based on your underline offset */
+        width: 0;
+        height: 2px; /* Adjust based on your underline thickness */
+        background-color: #1E1E1E;
+        transform: translateX(-50%);
+        transform-origin: center;
+        transition: width 0.3s ease-in-out;
+    }
+
+    .hover-progress:hover::after {
+        width: 100%;
+    }
+
+
+	@media (max-width: 600px) {
+		.navigationHeader{
+			color: #1E1E1E;
+font-family: "DM Sans";
+font-size: 40px;
+font-style: normal;
+font-weight: 700;
+line-height: 150%; /* 60px */
+letter-spacing: -0.76px;
+text-transform: uppercase;
+		}
+	.mobileNavigationReverse{
+		display: flex;
+		flex-direction: column-reverse;
+	}
+	.mobileLogo{
+		width: 99px;
+		height: 27px;
+		margin-top: 0.7rem;
+	}
+
+
+</style>
