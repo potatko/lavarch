@@ -1,0 +1,63 @@
+---
+import Logo from "../assets/hlavne_logo-transparent-black 1.png";
+import { Image } from 'astro:assets';
+import homePage from "../assets/homePage.png";
+import sipkaHore from "../assets/sipkaOffice.png";
+import sipkaWhite from "../assets/sipkaWhite.png";
+import c013 from "../assets/c-013.png";
+---
+
+<div class="homepage h-screen -mt-22 md:-mt-34">
+    <div class="max-w-[88%] mx-auto px-4">
+    <div class="pl-20">
+        <div class="text-white text-[90px] font-bold font-['DM Sans'] capitalize leading-[135px] pt-[317px] ">BÝVANIE  BEZ<br/>KOMPROMISOV</div>
+        <div class="text-white text-xl font-normal font-['DM Sans'] leading-[30px] pt-3">Navrhneme vám domov, ktorý odráža vašu osobnosť a túžby, tvoríme modernú funkčnú <br/>architektúru, ktorá je energeticky úsporná a myslí na každý detail.</div>
+        <div class="flex gap-19 mt-12">
+            <div class=" h-[58px] pl-4 pr-[17px] py-[5px] bg-white/25 justify-center items-center gap-2.5 inline-flex">
+                <div class="text-white text-[30px] font-light font-['DM Sans'] leading-[48px]">VŠETKY PROJEKTY</div>
+                <Image /* src={sipkaWhite} */ alt="sipkaHore" />
+            </div>
+            <div class="h-[58px] px-4 py-[5px] bg-white justify-center items-center gap-2.5 inline-flex">
+                <div class="text-[#1e1e1e] text-[32px] font-light font-['DM Sans'] leading-[48px]">O NÁS</div>
+                <Image /* src={sipkaHore} */ alt="sipkaHore" />
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+</div>
+
+<div class="projekty h-screen ">
+   
+    <div class="max-w-[88%] mx-auto px-4">
+        <div class= "sticky top-25 z-50" id="progressBar" >
+            <div class="h-0.5 bg-[#E9E5E5] mt-4 lg:mt-20"></div>
+            <div class="h-[3px] bg-[#1E1E1E] -mt-0.5 progress left-0 hidden" ></div>
+        </div>
+        <div class="flex justify-between pt-16">
+            <div class="text-[#1e1e1e] text-[56px] font-bold font-['DM Sans'] uppercase leading-[84px]">NaŠe najnovŠie projekty</div>
+            <div class="flex justify-center items-center gap-2.5">
+                <div class="text-[#1e1e1e] text-xl font-light font-['DM Sans'] leading-[30px]">VŠETKY</div>
+            <Image /* src={sipkaHore} */ alt="sipkaHore" class={"w-[10px] h-[10px]"}/>
+            </div>
+            
+        </div>
+        <div class="flex mt-13">
+            <div class="projekt flex flex-col gap-2 justify-center items-center">
+                <Image src={c013} alt={"c013"}/>
+            </div>
+            
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .homepage {
+        background-image: url('../assets/homePage.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        
+    }

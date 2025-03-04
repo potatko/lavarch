@@ -6,6 +6,8 @@ import rd_standard_47 from "../assets/rd_standard_47_b02-scaled 4.png";
 import arrow from "../assets/arrow.png";
 import elipse from "../assets/Ellipse 18.svg";
 import map from "../assets/map.svg";
+import sipkaHore from "../assets/sipkaOffice.png";
+
 
 import { Image } from 'astro:assets';
 ---
@@ -177,10 +179,11 @@ import { Image } from 'astro:assets';
 <!--Where to find us -->
 <div class="flex flex-col mt-12 gap-4 location">
     <div
-        class="text-[#1E1E1E] font-dmSans text-[3.5rem] font-bold leading-[5.25rem] tracking-[-0.0665rem] uppercase"
+        class="text-[#1E1E1E] font-dmSans text-[3.5rem] font-bold leading-[5.25rem] tracking-[-0.0665rem] uppercase hidden lg:inline-block"
     >
         kde nás nájdete
     </div>
+    <div class="w-[214px] text-[#1e1e1e] text-2xl font-bold font-['DM Sans'] uppercase leading-9 lg:hidden inline-block">KDE NÁS NÁJDETE</div>
 
     <div class="map flex justify-center items-center mt-4 relative svg-container" >
        
@@ -229,78 +232,65 @@ import { Image } from 'astro:assets';
             <path d="M27.656 23.144C26.848 23.144 26.136 22.964 25.52 22.604C24.912 22.236 24.432 21.728 24.08 21.08C23.736 20.424 23.564 19.664 23.564 18.8C23.564 17.944 23.736 17.192 24.08 16.544C24.432 15.888 24.912 15.376 25.52 15.008C26.136 14.64 26.848 14.456 27.656 14.456C28.48 14.456 29.2 14.64 29.816 15.008C30.432 15.376 30.908 15.888 31.244 16.544C31.588 17.192 31.76 17.944 31.76 18.8C31.76 19.664 31.588 20.424 31.244 21.08C30.908 21.728 30.432 22.236 29.816 22.604C29.2 22.964 28.48 23.144 27.656 23.144ZM27.668 22.076C28.244 22.076 28.748 21.944 29.18 21.68C29.612 21.416 29.944 21.04 30.176 20.552C30.416 20.064 30.536 19.48 30.536 18.8C30.536 18.12 30.416 17.536 30.176 17.048C29.944 16.56 29.612 16.188 29.18 15.932C28.748 15.668 28.244 15.536 27.668 15.536C27.092 15.536 26.588 15.668 26.156 15.932C25.724 16.188 25.388 16.56 25.148 17.048C24.908 17.536 24.788 18.12 24.788 18.8C24.788 19.48 24.908 20.064 25.148 20.552C25.388 21.04 25.724 21.416 26.156 21.68C26.588 21.944 27.092 22.076 27.668 22.076ZM33.2401 23V16.136C33.2401 15.72 33.3081 15.38 33.4441 15.116C33.5881 14.852 33.7961 14.66 34.0681 14.54C34.3401 14.42 34.6681 14.36 35.0521 14.36H35.7601V15.38H35.2441C34.9561 15.38 34.7481 15.44 34.6201 15.56C34.5001 15.672 34.4401 15.872 34.4401 16.16V23H33.2401ZM32.3521 17.972V16.952H35.8921V17.972H32.3521ZM37.2074 23V17.972H36.3194V16.952H37.2074V16.136C37.2074 15.72 37.2754 15.38 37.4114 15.116C37.5554 14.852 37.7634 14.66 38.0354 14.54C38.3074 14.42 38.6354 14.36 39.0194 14.36H39.6434V15.38H39.2114C38.9234 15.38 38.7154 15.44 38.5874 15.56C38.4674 15.672 38.4074 15.872 38.4074 16.16V16.952H42.0914V23H40.8914V17.972H38.4074V23H37.2074ZM41.5034 15.908C41.2794 15.908 41.0914 15.836 40.9394 15.692C40.7874 15.548 40.7114 15.364 40.7114 15.14C40.7114 14.924 40.7874 14.748 40.9394 14.612C41.0914 14.468 41.2794 14.396 41.5034 14.396C41.7354 14.396 41.9234 14.468 42.0674 14.612C42.2194 14.748 42.2954 14.924 42.2954 15.14C42.2954 15.364 42.2194 15.548 42.0674 15.692C41.9234 15.836 41.7354 15.908 41.5034 15.908ZM46.3889 23.144C45.8049 23.144 45.2849 23.012 44.8289 22.748C44.3729 22.476 44.0129 22.104 43.7489 21.632C43.4929 21.16 43.3649 20.612 43.3649 19.988C43.3649 19.356 43.4929 18.804 43.7489 18.332C44.0129 17.852 44.3729 17.48 44.8289 17.216C45.2849 16.944 45.8049 16.808 46.3889 16.808C47.1249 16.808 47.7409 17 48.2369 17.384C48.7329 17.768 49.0489 18.288 49.1849 18.944H47.9369C47.8569 18.592 47.6729 18.32 47.3849 18.128C47.1049 17.936 46.7689 17.84 46.3769 17.84C46.0569 17.84 45.7609 17.924 45.4889 18.092C45.2169 18.252 44.9969 18.492 44.8289 18.812C44.6689 19.124 44.5889 19.512 44.5889 19.976C44.5889 20.32 44.6369 20.628 44.7329 20.9C44.8289 21.164 44.9569 21.388 45.1169 21.572C45.2849 21.756 45.4769 21.896 45.6929 21.992C45.9089 22.08 46.1369 22.124 46.3769 22.124C46.6409 22.124 46.8769 22.084 47.0849 22.004C47.3009 21.916 47.4809 21.788 47.6249 21.62C47.7769 21.452 47.8809 21.252 47.9369 21.02H49.1849C49.0489 21.66 48.7329 22.176 48.2369 22.568C47.7409 22.952 47.1249 23.144 46.3889 23.144ZM53.097 23.144C52.521 23.144 52.009 23.012 51.561 22.748C51.113 22.484 50.761 22.116 50.505 21.644C50.257 21.172 50.133 20.624 50.133 20C50.133 19.36 50.257 18.804 50.505 18.332C50.761 17.852 51.113 17.48 51.561 17.216C52.009 16.944 52.529 16.808 53.121 16.808C53.713 16.808 54.221 16.94 54.645 17.204C55.069 17.468 55.397 17.82 55.629 18.26C55.861 18.692 55.977 19.172 55.977 19.7C55.977 19.78 55.973 19.868 55.965 19.964C55.965 20.052 55.961 20.152 55.953 20.264H51.009V19.412H54.777C54.753 18.908 54.585 18.516 54.273 18.236C53.961 17.948 53.573 17.804 53.109 17.804C52.781 17.804 52.481 17.88 52.209 18.032C51.937 18.176 51.717 18.392 51.549 18.68C51.389 18.96 51.309 19.316 51.309 19.748V20.084C51.309 20.532 51.389 20.912 51.549 21.224C51.717 21.528 51.937 21.76 52.209 21.92C52.481 22.072 52.777 22.148 53.097 22.148C53.481 22.148 53.797 22.064 54.045 21.896C54.293 21.728 54.477 21.5 54.597 21.212H55.797C55.693 21.58 55.517 21.912 55.269 22.208C55.021 22.496 54.713 22.724 54.345 22.892C53.985 23.06 53.569 23.144 53.097 23.144ZM59.9846 23V14.6H61.4006L64.2446 20.276L67.0766 14.6H68.5046V23H67.3046V16.7L64.7006 21.824H63.7766L61.1846 16.712V23H59.9846ZM71.9662 23.144C71.4702 23.144 71.0582 23.06 70.7302 22.892C70.4022 22.724 70.1582 22.5 69.9982 22.22C69.8382 21.932 69.7582 21.624 69.7582 21.296C69.7582 20.896 69.8622 20.556 70.0702 20.276C70.2782 19.988 70.5742 19.768 70.9582 19.616C71.3422 19.464 71.8022 19.388 72.3382 19.388H73.9102C73.9102 19.036 73.8582 18.744 73.7542 18.512C73.6502 18.28 73.4942 18.108 73.2862 17.996C73.0862 17.876 72.8302 17.816 72.5182 17.816C72.1582 17.816 71.8502 17.904 71.5942 18.08C71.3382 18.248 71.1782 18.5 71.1142 18.836H69.9142C69.9622 18.412 70.1062 18.052 70.3462 17.756C70.5942 17.452 70.9102 17.22 71.2942 17.06C71.6782 16.892 72.0862 16.808 72.5182 16.808C73.0862 16.808 73.5622 16.908 73.9462 17.108C74.3302 17.308 74.6182 17.592 74.8102 17.96C75.0102 18.32 75.1102 18.752 75.1102 19.256V23H74.0662L73.9702 21.98C73.8822 22.14 73.7782 22.292 73.6582 22.436C73.5382 22.58 73.3942 22.704 73.2262 22.808C73.0662 22.912 72.8782 22.992 72.6622 23.048C72.4542 23.112 72.2222 23.144 71.9662 23.144ZM72.1942 22.172C72.4502 22.172 72.6822 22.12 72.8902 22.016C73.0982 21.912 73.2742 21.772 73.4182 21.596C73.5702 21.412 73.6822 21.208 73.7542 20.984C73.8342 20.752 73.8782 20.516 73.8862 20.276V20.24H72.4582C72.1142 20.24 71.8342 20.284 71.6182 20.372C71.4102 20.452 71.2582 20.564 71.1622 20.708C71.0662 20.852 71.0182 21.02 71.0182 21.212C71.0182 21.412 71.0622 21.584 71.1502 21.728C71.2462 21.864 71.3822 21.972 71.5582 22.052C71.7342 22.132 71.9462 22.172 72.1942 22.172ZM76.4139 23V16.952H77.4939L77.6019 18.092C77.7379 17.82 77.9139 17.592 78.1299 17.408C78.3459 17.216 78.5979 17.068 78.8859 16.964C79.1819 16.86 79.5179 16.808 79.8939 16.808V18.08H79.4619C79.2139 18.08 78.9779 18.112 78.7539 18.176C78.5299 18.232 78.3299 18.332 78.1539 18.476C77.9859 18.62 77.8539 18.816 77.7579 19.064C77.6619 19.312 77.6139 19.62 77.6139 19.988V23H76.4139ZM83.2639 23C82.8799 23 82.5479 22.94 82.2679 22.82C81.9879 22.7 81.7719 22.5 81.6199 22.22C81.4679 21.94 81.3919 21.56 81.3919 21.08V17.972H80.3479V16.952H81.3919L81.5359 15.44H82.5919V16.952H84.3079V17.972H82.5919V21.092C82.5919 21.436 82.6639 21.672 82.8079 21.8C82.9519 21.92 83.1999 21.98 83.5519 21.98H84.2479V23H83.2639ZM85.4872 23V16.952H86.6872V23H85.4872ZM86.0992 15.812C85.8672 15.812 85.6752 15.74 85.5232 15.596C85.3792 15.452 85.3072 15.268 85.3072 15.044C85.3072 14.828 85.3792 14.652 85.5232 14.516C85.6752 14.372 85.8672 14.3 86.0992 14.3C86.3232 14.3 86.5112 14.372 86.6632 14.516C86.8152 14.652 86.8912 14.828 86.8912 15.044C86.8912 15.268 86.8152 15.452 86.6632 15.596C86.5112 15.74 86.3232 15.812 86.0992 15.812ZM88.1752 23V16.952H89.2552L89.3272 17.984C89.5192 17.624 89.7912 17.34 90.1432 17.132C90.4952 16.916 90.8992 16.808 91.3552 16.808C91.8352 16.808 92.2472 16.904 92.5912 17.096C92.9352 17.288 93.2032 17.58 93.3952 17.972C93.5872 18.356 93.6832 18.84 93.6832 19.424V23H92.4832V19.544C92.4832 18.984 92.3592 18.56 92.1112 18.272C91.8632 17.984 91.5032 17.84 91.0312 17.84C90.7192 17.84 90.4392 17.916 90.1912 18.068C89.9432 18.212 89.7432 18.428 89.5912 18.716C89.4472 19.004 89.3752 19.356 89.3752 19.772V23H88.1752Z" fill="black"/>
           </g>
         </svg>
-<div class="tooltip" id="tooltip"></div>
-    </div>
-    <div class="mt-16 flex-col flex items-center justify-center mb-60" id="miesta">
-        <div
-            class=" h-24 border-2 border-black flex items-center justify-between px-16 w-[100%] max-w-[72rem]"
-        >
-            <div
-                class="text-[#1E1E1E] font-dmSans text-[2rem] font-medium leading-[3rem] tracking-[-0.038rem]"
-            >
-                OFFICE BRATISLAVA
-            </div>
-            <div class="flex flex-row items-center justify-center gap-16">
-                <div
-                    class="w-[57px] h-[1px] rotate-[-90deg] flex-shrink-0 bg-[#1E1E1E]"
-                >
-                </div>
-                <div
-                    class="text-[#1E1E1E] font-dmSans text-[1.5rem] font-light leading-[2.25rem] tracking-[-0.0285rem] flex items-center gap-2 cursor-pointer"
-                >
-                    NAVIGOVAŤ
+<div class="tooltip" id="tooltip">
 
-                    <Image src={arrow} alt="Šípka" />
-                </div>
-            </div>
-        </div>
-        <div
-            class=" h-24 border-2 border-black flex items-center justify-between px-16 w-[100%] max-w-[72rem] mt-12"
-        >
-            <div
-                class="text-[#1E1E1E] font-dmSans text-[2rem] font-medium leading-[3rem] tracking-[-0.038rem]"
-            >
-                OFFICE MARTIN
-            </div>
-            <div class="flex flex-row items-center justify-center gap-16">
-                <div
-                    class="w-[57px] h-[1px] rotate-[-90deg] flex-shrink-0 bg-[#1E1E1E]"
-                >
-                </div>
-                <div
-                    class="text-[#1E1E1E] font-dmSans text-[1.5rem] font-light leading-[2.25rem] tracking-[-0.0285rem] flex items-center gap-2 cursor-pointer"
-                >
-                    NAVIGOVAŤ
-
-                    <Image src={arrow} alt="Šípka" />
-                </div>
-            </div>
-        </div>
-        <div
-            class=" h-24 border-2 border-black flex items-center justify-between px-16 w-[100%] max-w-[72rem] mt-12"
-        >
-            <div
-                class="text-[#1E1E1E] font-dmSans text-[2rem] font-medium leading-[3rem] tracking-[-0.038rem]"
-            >
-                OFFICE LEVOČA
-            </div>
-            <div class="flex flex-row items-center justify-center gap-16">
-                <div
-                    class="w-[57px] h-[1px] rotate-[-90deg] flex-shrink-0 bg-[#1E1E1E]"
-                >
-                </div>
-                <div
-                    class="text-[#1E1E1E] font-dmSans text-[1.5rem] font-light leading-[2.25rem] tracking-[-0.0285rem] flex items-center gap-2 cursor-pointer"
-                >
-                    NAVIGOVAŤ
-
-                    <Image src={arrow} alt="Šípka" />
-                </div>
-            </div>
-        </div>
-    </div>
-    
 </div>
+    </div>
+    <div class="mt-16 flex-col flex gap-5 mb-60 w-[100%]" id="miesta">
+        <div class="flex flex-col lg:flex-row gap-8 ">
+         <div class="lg:w-[50%] w-full lg:h-[194px] bg-[#e9e5e5] pb-6 pl-6 pr-4 lg:pl-12 pt-6 lg:pr-11">
+             <div class="flex justify-between  mx-auto">
+                 <div class="text-[#1e1e1e] text-[32px] font-bold font-['DM Sans'] leading-[30px] lg:leading-[48px]">Office Bratislava</div>
+                 <Image src={sipkaHore} alt={"sipka hore"} class={"w-[32px] h-[32px]"}/>
+             </div>
+             <div class="text-[#1e1e1e] text-xl font-light font-['DM Sans'] leading-[30px] mt-3">Vajnorská 81/21A<br/>831 06 Bratislava - mestská časť Rača</div>
+         </div>
+         <div class="lg:w-[50%] w-full lg:h-[194px] bg-[#e9e5e5] pb-6 pl-6 pr-4 lg:pl-12 pt-6 lg:pr-11">
+             <div class="flex justify-between mx-auto">
+                 <div class="text-[#1e1e1e] text-[32px] font-bold font-['DM Sans'] leading-[30px] lg:leading-[48px]">Office Martin</div>
+                 <Image src={sipkaHore} alt={"sipka hore"} class={"w-[32px] h-[32px]"} />
+             </div>
+             <div class="text-[#1e1e1e] text-xl font-light font-['DM Sans'] leading-[30px] mt-3">Vajnorská 81/21A<br/>831 06 Bratislava - mestská časť Rača</div>
+         </div>
+        </div>
+        <div class="hidden w-[100%] lg:flex bg-[#e9e5e5] h-[279px]">
+            <div class="w-[50%] h-[194px] bg-[#e9e5e5] pl-6 pr-4 lg:pl-12 pt-6 lg:pr-11">
+                <div class="flex justify-between  mx-auto">
+                    <div class="text-[#1e1e1e] text-[32px] font-bold font-['DM Sans'] leading-[48px]">Office Levoča</div>
+                    
+                </div>
+                <div class="text-[#1e1e1e] text-xl font-light font-['DM Sans'] leading-[30px] mt-3">Vajnorská 81/21A<br/>831 06 Bratislava - mestská časť Rača</div>
+                <div class="text-[#1e1e1e] text-xl font-light font-['DM Sans'] leading-[30px] mt-3">info@lavarch.com<br/>+421 918 428 424 </div>
+            </div>
+            <div class="w-[50%] h-[194px] bg-[#e9e5e5] pl-12 pt-6 pr-11">
+                <div class="flex justify-between  mx-auto">
+                    <div class="text-[#1e1e1e] text-[32px] font-bold font-['DM Sans'] leading-[48px]">Fakturačné údaje</div>
+                    <Image src={sipkaHore} alt={"sipka hore"} class={"w-[32px] h-[32px]"}/>
+                </div>
+                <div class="text-[#1e1e1e] text-xl font-light font-['DM Sans'] leading-[30px] mt-3">LAVARCH s.r.o. <br>Ruskinovská 13, Levoča</div>
+                <div class="text-[#1e1e1e] text-xl font-light font-['DM Sans'] leading-[30px] mt-3">IČO: 51020238 <br/>IČ DPH: SK2120568681</div>
+            </div>
+        </div>
+
+        <div class="flex flex-col w-[100%] lg:hidden bg-[#e9e5e5] h-auto pb-5">
+            <div class="w-[100%] ] bg-[#e9e5e5] pl-6 pr-4 lg:pl-12 pt-6 lg:pr-11">
+                <div class="flex justify-between  mx-auto">
+                    <div class="text-[#1e1e1e] text-[32px] font-bold font-['DM Sans'] leading-[48px]">Office Levoča</div>
+                    <Image src={sipkaHore} alt={"sipka hore"} class={"w-[32px] h-[32px]"}/>
+                </div>
+                <div class="text-[#1e1e1e] text-xl font-light font-['DM Sans'] leading-[30px] mt-3">Vajnorská 81/21A<br/>831 06 Bratislava - mestská časť Rača</div>
+                <div class="text-[#1e1e1e] text-xl font-light font-['DM Sans'] leading-[30px] mt-3">info@lavarch.com<br/>+421 918 428 424 </div>
+            </div>
+            <div class="w-[100%]  bg-[#e9e5e5] pl-6 pr-4 lg:pl-12 pt-6 lg:pr-11">
+                <div class="flex justify-between  mx-auto">
+                    <div class="text-[#1e1e1e] text-[32px] font-bold font-['DM Sans'] leading-[48px]">Fakturačné údaje</div>
+                    
+                </div>
+                <div class="text-[#1e1e1e] text-xl font-light font-['DM Sans'] leading-[30px] mt-3">LAVARCH s.r.o. <br>Ruskinovská 13, Levoča</div>
+                <div class="text-[#1e1e1e] text-xl font-light font-['DM Sans'] leading-[30px] mt-3">IČO: 51020238 <br/>IČ DPH: SK2120568681</div>
+            </div>
+        </div>
+     </div>
 
 <style>
     .info-circle{
@@ -456,10 +446,7 @@ text-underline-position: from-font;
         text-underline-position: from-font;
     }
 
-    .location{
-        display:none;
-    }
-
+    
     .navigationHeader{
         color: #1E1E1E;
 font-family: "DM Sans";
