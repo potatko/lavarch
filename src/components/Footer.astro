@@ -10,13 +10,19 @@ const { title, currentPage } = Astro.props;
 ---
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const scrollToTopButton = document.getElementById('scroll-to-top');
-        if (scrollToTopButton) {
-            scrollToTopButton.addEventListener('click', () => {
-        }
-        )};
-    });
+  document.addEventListener('DOMContentLoaded', () => {
+      const scrollToTopButton = document.getElementById('scroll-to-top');
+      if (scrollToTopButton) {
+          scrollToTopButton.addEventListener('click', () => {
+              // Scrolls to the top of the page
+              window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth' // Makes the scroll smooth
+              });
+          });
+      }
+      
+  });
 </script>
 
 <footer class="bg-[#1E1E1E] h-auto lg:h-[618px] flex justify-between items-center w-[100%] overflow-hidden mt-20" >
@@ -80,7 +86,7 @@ const { title, currentPage } = Astro.props;
     </div>
     <div class="flex flex-col justify-center items-end w-[30%] h-full ">
         <div class="flex gap-2 cursor-pointer " id="scroll-to-top">
-            <div class="text-[#E9E5E5] font-dm-sans text-sm font-light leading-[1.5rem] tracking-[-0.019rem] underline decoration-solid decoration-auto underline-offset-[45%]">
+            <div  class="text-[#E9E5E5] font-dm-sans text-sm font-light leading-[1.5rem] tracking-[-0.019rem] underline decoration-solid decoration-auto underline-offset-[45%]">
                 NASPÄŤ HORE
               </div>
               <Image src={advance} alt="hore"/>
@@ -200,117 +206,7 @@ const { title, currentPage } = Astro.props;
       
     </div>
     
-    <!--<div class="max-w-[88%] mx-auto px-4 flex justify-between items-center w-[100%] h-full flex-col lg:flex-row mobileFooter"> 
-      <div class="flex flex-col justify-center  h-full  "  >
-        <div class="w-[99px] h-[27px] md:w-auto md:h-auto">
-          <Image src={Logo} alt="logo"/>
-        </div>
-          
-          <div class="flex flex-col w-[601px] mt-20">
-              <div class="flex  gap-48">
-                  <div class="text-[#E9E5E5] font-dm-sans text-4xl font-bold leading-[4.5rem] tracking-[-0.057rem]">
-                      DOMOV
-                    </div>
-                    <div class="text-[#E9E5E5] font-dm-sans text-4xl font-bold leading-[4.5rem] tracking-[-0.057rem]">
-                      PROJEKTY
-                    </div>
-                    
-              </div>
-              <div class="flex gap-50 ">
-                  <div class="text-[#E9E5E5] font-dm-sans text-4xl font-bold leading-[4.5rem] tracking-[-0.057rem]">
-                      SLUŽBY
-                    </div>
-                    <div class="text-[#E9E5E5] font-dm-sans text-4xl font-bold leading-[4.5rem] tracking-[-0.057rem]">
-                      BLOG
-                    </div>
-                    
-              </div>
-  
-          </div>
-  
-          <div class="flex w-[601px] gap-24 mt-20">
-              <div class="flex">
-                  <div class="text-[#E9E5E5] font-dm-sans text-xl font-light leading-[1.875rem] tracking-[-0.024rem] capitalize">
-                      Naše Kancelárie
-                    </div>
-                  
-              </div>
-              <div class="flex gap-8 ">
-                  <div class="text-[#E9E5E5] font-dm-sans text-xl font-light leading-[1.875rem] tracking-[-0.024rem] capitalize">
-                      Bratislava
-                    </div>
-                    <div class="text-[#E9E5E5] font-dm-sans text-xl font-light leading-[1.875rem] tracking-[-0.024rem] capitalize">
-                      Levoča
-                    </div>
-                    <div class="text-[#E9E5E5] font-dm-sans text-xl font-light leading-[1.875rem] tracking-[-0.024rem] capitalize">
-                      Martin
-                    </div>
-                    
-              </div>
-          </div>
-          <div class="flex  gap-28 mt-20">
-              <div class="text-[#E9E5E5] font-dm-sans text-xl font-bold leading-[1.875rem] tracking-[-0.024rem]">
-                  Zásady o ochrane súkromia
-                </div>
-                <div class="text-[#E9E5E5] font-dm-sans text-xl font-bold leading-[1.875rem] tracking-[-0.024rem]">
-                  Zásady spracúvania súborov cookie
-                </div>
-                              
-          </div>
-      </div>
-      <div class="flex flex-col justify-center items-end w-[30%] h-full ">
-          <div class="flex gap-2 cursor-pointer " id="scroll-to-top">
-              <div class="text-[#E9E5E5] font-dm-sans text-sm font-light leading-[1.5rem] tracking-[-0.019rem] underline decoration-solid decoration-auto underline-offset-[45%]">
-                  NASPÄŤ HORE
-                </div>
-                <Image src={advance} alt="hore"/>
-          </div>
-          <div class="flex flex-col mt-14">
-  
-              <div class="flex justify-between gap-10 items-end">
-                  <div class="text-[#636363] font-dm-sans text-xl font-light leading-[1.875rem] tracking-[-0.024rem]">
-                      Socials:
-                    </div>
-                    
-                  <div class="flex gap-6">
-                      <div class="w-[63px] h-[63px] border border-[#E9E5E5] bg-[rgba(233,233,233,0.10)] flex justify-center items-center">
-                      <Image src={Facebook} alt={"facebook"}/>
-                      </div>
-                      <div class="w-[63px] h-[63px] border border-[#E9E5E5] bg-[rgba(233,233,233,0.10)] flex justify-center items-center">
-                      <Image src={Instagram} alt={"instagram"}/>
-                      </div>
-                  </div>
-              </div>
-              <div class="flex justify-between gap-10 mt-1">
-                  <div class="text-[#636363] font-dm-sans text-xl font-light leading-[1.875rem] tracking-[-0.024rem]">
-                      Telephone: 
-                    </div>
-                    <div class="text-[#E9E5E5] font-dm-sans text-xl font-light leading-[1.875rem] tracking-[-0.024rem]">
-                      +421 901 774 764
-                    </div>
-                    
-              </div>
-              <div class="flex justify-between  gap-10 mt-1">
-                  <div class="text-[#636363] font-dm-sans text-xl font-light leading-[1.875rem] tracking-[-0.024rem]">
-                      Email: 
-                    </div>
-                    <div class="text-[#E9E5E5] font-dm-sans text-xl font-light leading-[1.875rem] tracking-[-0.024rem]">
-                      info@lavarch.com
-                    </div>
-                    
-              </div>
-          </div>
-          <div class="text-[#E9E5E5] font-dm-sans text-xl font-light leading-[1.875rem] tracking-[-0.02375rem] mt-16 -ml-6">
-              LAVARCH s.r.o.<br>Ruskinovská 13, Levoča<br>IČO: 51020238<br>IČ DPH: SK2120568681
-            </div>
-            
-            <div class="text-[#E9E5E5] font-dm-sans text-xl font-light leading-[1.875rem] tracking-[-0.02375rem] mt-[88px] -ml-12">
-              Copyright © LAVARCH 2025
-            </div>
-            
-            
-      </div>
-      </div> -->
+   
     
 </footer>
 
