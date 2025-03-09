@@ -12,174 +12,96 @@ import sipkaHore from "../assets/sipkaOffice.png";
 import { Image } from 'astro:assets';
 ---
 
-<!-- Section Navigation -->
-<div  id="section-nav" class="flex flex-nowrap items-center gap-4 lg:gap-12 pt-6 lg:pt-8 sticky top-13 md:top-20 lg:top-22 z-40 bg-white pb-7 overflow-x-auto whitespace-nowrap scrollbar-hide bg-white">
-    <div id="nav-kto-sme" class="nav-item text-[#E9E5E5] font-dmSans text-[1.25rem] font-medium leading-[1.875rem] tracking-[-0.0235rem] cursor-pointer content-hover mobileNavigation inline-block">
-        <a href="#kto-sme">Kto sme</a>
+<div class="kontakt ">
+    <div class="relative justify-start text-[#e9e5e5] text-[40px] md:text-[56px] font-bold font-['DM_Sans'] uppercase leading-[60px] md:leading-[84px]">Napište nám a my sa vám ozveme!</div>
+    <div class="z-50 pt-10" id="progressBar">
+        <div class="h-0.5 bg-[#E9E5E5]"></div>
+        <div class="h-[3px] bg-[#FFF] -mt-0.5 progress left-0 hidden"></div>
     </div>
-    <div id="nav-filozofia" class="nav-item text-[#E9E5E5] font-dmSans text-[1.25rem] font-medium leading-[1.875rem] tracking-[-0.0235rem] cursor-pointer content-hover mobileNavigation inline-block">
-        <a href="#filozofia">Naša filozofia</a>
-    </div>
-    <div id="nav-jurco" class="nav-item text-[#E9E5E5] font-dmSans text-[1.25rem] font-medium leading-[1.875rem] tracking-[-0.0235rem] cursor-pointer content-hover mobileNavigation inline-block">
-        <a href="#jurco">Ing. Martin Jurčo</a>
-    </div>
-</div>
-
-<style>
-    .scrollbar-hide::-webkit-scrollbar {
-      display: none;
-    }
-    .scrollbar-hide {
-      -ms-overflow-style: none;  /* IE and Edge */
-      scrollbar-width: none;  /* Firefox */
-    }
-  </style>
-  
-
-<!--Main Content -->
-<div class="flex flex-wrap mt-10 lg:mt-20 gap-20">
-    <!--Content 1 section kto-sme-->
-    <div class="flex justify-between w-[100%] mobileContent" id="kto-sme">
-        <div class="w-[50%] mobileContentPart">
-            <div class="flex flex-col h-[100%] justify-center gap-6 lg:gap-12">
-                <div
-                    class="text-[#1E1E1E] mobileTextHeader font-dmSans text-[3rem] font-bold leading-[3.6rem] tracking-[-0.057rem] uppercase"
-                >
-                    náš pribeh začal tu
-                </div>
-                <div
-                    class="text-[#1E1E1E]  mobileText font-dmSans text-[1.25rem] font-normal leading-[1.875rem] tracking-[-0.0235rem]"
-                >
-                    Sme architektonicko-konštrukčný ateliér, ktorý poskytuje
-                    služby po celom území Slovenska. Charakterizuje nás láska k
-                    minimalizmu a dizajnu, ktorý je nadčasový. Vo svojich
-                    návrhoch prepájame krásu architektúry s plnou funkčnosťou
-                    priestoru.
-                </div>
-                <div class="flex items-center gap-4 lg:gap-16">
-                    <div class="flex items-center gap-1 lg:gap-2 cursor-pointer">
-                        <div
-                            class="text-[#000] mobileTextLinks font-dmSans text-[1.25rem] font-medium leading-[1.875rem] tracking-[-0.0235rem]"
-                        >
-                            Prezrieť si našu ponuku
-                        </div>
-                        <Image src={arrow} alt="Šípka" />
-                    </div>
-                    <div class="flex items-center gap-2 cursor-pointer">
-                        <div
-                            class="text-[#000] mobileTextLinks font-dmSans text-[1.25rem] font-medium leading-[1.875rem] tracking-[-0.0235rem]"
-                        >
-                            Blog
-                        </div>
-                        <Image src={arrow} alt="Šípka" />
-                    </div>
-                </div>
-            </div>
+    <div class="flex mt-20 justify-between ">
+        <div class="md:w-[289px] w-full pl-8 md:pl-0 h-16 relative border border-white flex  md:justify-center items-center">
+            <div class="absolute -top-3.5 left-12 bg-[#1E1E1E] justify-start text-white text-sm font-light font-['DM_Sans'] leading-[21px]">Vyberte projekt</div>
+            <div class="relative justify-start  text-white text-xl font-bold font-['DM_Sans'] leading-[30px]">O aký projekt ide?</div>
         </div>
-        <div class="w-[50%] justify-end flex items-center mobileContentPart">
-            <Image src={rd_standard_33} alt="Drevený dom"  class="md:w-auto w-full"/>
-        </div>
-    </div>
-
-    <div class="h-0.5 bg-[#E9E5E5] mt-1 lg:mt-20 w-[100%]"></div>
-
-    <!--Content 2  section filozofia-->
-    <div class="flex justify-between w-[100%] mobileContentReverse " id="filozofia">
-        <div class="w-[50%] justify-normal flex items-center mobileContentPart">
-            <Image src={ruskinovksyDom} alt="Moderný dom" class="md:w-auto w-full" />
-        </div>
-        <div class="w-[50%] mobileContentPart">
-            <div class="flex flex-col h-[100%] justify-center gap-6 lg:gap-12">
-                <div
-                    class="text-[#1E1E1E] mobileTextHeader font-dmSans text-[3rem] font-bold leading-[3.6rem] tracking-[-0.057rem] uppercase"
-                >
-                    Bývanie bez kompromisov
-                </div>
-                <div
-                    class="text-[#1E1E1E] mobileText font-dmSans text-[1.25rem] font-normal leading-[1.875rem] tracking-[-0.0235rem]"
-                >
-                    Spokojnosť klienta je základným kameňom našej filozofie.
-                    Veríme, že bývanie by malo odrážať vaše sny bez akýchkoľvek
-                    kompromisov. Našou prioritou je vytvoriť priestor, ktorý
-                    naplní vaše predstavy do posledného detailu – bez ústupkov v
-                    tom, čo je pre vás dôležité.
-                </div>
+        <div class="gap-2 items-center hidden md:flex">
+            <div class="relative justify-start text-white text-2xl font-light font-['DM_Sans'] leading-9">Kontaktujte nás hneď</div>
+            <div class="w-[65px] h-[1px] relative  rotate-[-90deg] bg-white"></div>
+            <div class="flex flex-col">
+                <div class="relative justify-start text-white text-xl font-light font-['DM_Sans'] leading-[30px]">info@lavarch.sk</div>
+                <div class="relative justify-start text-white text-xl font-light font-['DM_Sans'] leading-[30px]">+421 904 530 619</div>
             </div>
         </div>
     </div>
 
-    <!--Content 3 -->
-    <div class="flex justify-between w-[100%] mobileContent">
-        <div class="w-[50%] mobileContentPart">
-            <div class="flex flex-col h-[100%] justify-center gap-6 lg:gap-12">
-                <div
-                    class="text-[#1E1E1E] mobileTextHeader font-dmSans text-[3rem] font-bold leading-[3.6rem] tracking-[-0.057rem] uppercase"
-                >
-                    Naše projekty hovoria za nás
-                </div>
-                <div
-                    class="text-[#1E1E1E] mobileText font-dmSans text-[1.25rem] font-normal leading-[1.875rem] tracking-[-0.0235rem]"
-                >
-                    Každý projekt je výsledkom otvorenej komunikácie. Vďaka
-                    ktorej dokážeme prepojiť naše odborné poznatky s vašimi
-                    víziami a premeniť ich na realitu. Tak vznikajú výnimočné
-                    priestory, ktoré sú nielen funkčné a trvácne, ale
-                    predovšetkým prispôsobené vašim túžbam a potrebám.
-                </div>
+    <form class="mt-16">
+        <label class="mt-5 relative justify-start text-white text-xl font-bold font-['DM_Sans'] leading-[30px]" for="project-description">Popište projekt</label>
+        <textarea id="project-description" class="h-[275px] w-full relative bg-[#e9e5e5]/5 border border-white p-2 text-white"></textarea>
+        
+        <label class="mt-5 relative justify-start text-white text-xl font-bold font-['DM_Sans'] leading-[30px]" for="full-name">Meno priezvisko</label>
+        <input type="text" id="full-name" class="h-16 w-full relative bg-[#e9e5e5]/5 border border-white p-2 text-white" />
+        
+        <div class="flex w-full gap-8 mt-5">
+            <div class="w-[50%]">
+                <label class="relative justify-start text-white text-xl font-bold font-['DM_Sans'] leading-[30px]" for="email-address">E-mailová adresa</label>
+                <input type="email" id="email-address" class="h-16 w-full relative bg-[#e9e5e5]/5 border border-white p-2 text-white" />
+            </div>
+            
+            <div class="w-[50%]">
+                <label class="relative justify-start text-white text-xl font-bold font-['DM_Sans'] leading-[30px]" for="phone-number">Telefonné číslo</label>
+                <input type="tel" id="phone-number" class="h-16 w-full relative bg-[#e9e5e5]/5 border border-white p-2 text-white" />
             </div>
         </div>
-
-        <div class="w-[50%] justify-end flex items-center mobileContentPart">
-            <Image src={rd_standard_47} alt="Moderný dom 2"   class="md:w-auto w-full"/>
+        <div class="mt-10 px-4 py-[5px] bg-[#b3b3b3] inline-flex justify-center items-center gap-2.5">
+            <div class="relative justify-start text-[#1e1e1e] text-[32px] font-light font-['DM_Sans'] uppercase leading-[48px]">Poslať správu</div>
         </div>
+    </form>
+    <div class="z-50 mt-10" id="progressBar">
+        <div class="h-0.5 bg-[#E9E5E5]"></div>
+        <div class="h-[3px] bg-[#FFF] -mt-0.5 progress left-0 hidden"></div>
     </div>
-
-    <div class="h-0.5 bg-[#E9E5E5] mt-1 lg:mt-20 w-[100%]"></div>
-
-    <!--Content 4 section jurco -->
-    <div class="flex justify-between w-[100%] mobileContentReverse" id="jurco">
-        <div class="w-[50%] justify-normal flex items-center mobileContentPart mobileMargin">
-            <Image src={jurco} alt="Ing. Martin Jurčo" class="md:w-auto w-full"/>
-        </div>
-
-        <div class="w-[50%] mobileContentPart">
-            <div class="flex flex-col h-[100%] justify-center gap-6 lg:gap-12">
-                <div
-                    class="text-[#1E1E1E] mobileTextHeader font-dmSans text-[3rem] font-bold leading-[3.6rem] tracking-[-0.057rem] uppercase"
-                >
-                    Ing. Martin Jurčo
+    <div class="mt-15">
+        <div class="flex justify-between md:flex-row flex-col w-full">
+            <div class="flex flex-col">
+                <div class="relative justify-start text-[#e9e5e5] text-[32px] font-bold font-['DM_Sans'] leading-[48px]">FAKTURAČNÉ ÚDAJE</div>
+                <div class="flex flex-col">
+                    <div class=" text-[#e9e5e5] text-xl font-light font-['DM_Sans'] leading-[30px]">LAVARCH s.r.o.</div>
+                    <div class=" text-[#e9e5e5] text-xl font-light font-['DM_Sans'] leading-[30px]">Ruskinovská 13 Levoča </div>
+                    <div class=" text-[#e9e5e5] text-xl font-light font-['DM_Sans'] leading-[30px]">IČO:51020238</div>
+                    <div class=" text-[#e9e5e5] text-xl font-light font-['DM_Sans'] leading-[30px]">IČ DPH: SK2120568681</div>
                 </div>
-                <div
-                    class="text-[#1E1E1E] mobileText font-dmSans text-[1.25rem] font-normal leading-[1.875rem] tracking-[-0.0235rem]"
-                >
-                    Som zakladateľ spoločnosti LAVARCH, ktorá na trhu pôsobí od
-                    roku 2017. Vo svojej firme budujem proklientský prístup s
-                    dôrazom na maximálnu spokojnosť zákazníka. V našej tvorbe
-                    prezentujeme princíp nadčasovosti s dôrazom na jednoduchosť
-                    a plnú funkčnosť objektov. Mám rád nekonvenčné riešenia,
-                    udržateľnú architektúru a moderný minimalizmus.
-                </div>
+
             </div>
-            <div class="flex items-center gap-16">
-                <div class="flex items-center gap-2 cursor-pointer">
-                    <div
-                        class="text-[#000] mobileTextLinks font-dmSans text-[1.25rem] font-medium leading-[1.875rem] tracking-[-0.0235rem]"
-                    >
-                        Kontakt
-                    </div>
-                    <Image src={arrow} alt="Šípka" />
+            <div class="flex flex-col">
+                <div class="relative justify-start text-[#e9e5e5] text-[32px] font-bold font-['DM_Sans'] leading-[48px]">SLEDUJTE NÁS</div>
+                <div class="flex flex-col">
+                    <div class=" text-[#e9e5e5] text-xl font-light font-['DM_Sans'] leading-[30px]">Instagram</div>
+                    <div class=" text-[#e9e5e5] text-xl font-light font-['DM_Sans'] leading-[30px]">Facebook </div>
+                
                 </div>
+                
+            </div>
+            <div class="flex flex-col">
+                <div class="relative justify-start text-[#e9e5e5] text-[32px] font-bold font-['DM_Sans'] leading-[48px]">KONTAKT</div>
+                <div class="flex flex-col">
+                    <div class=" text-[#e9e5e5] text-xl font-light font-['DM_Sans'] leading-[30px]">Ing. Martin Jurčo</div>
+                    <div class=" text-[#e9e5e5] text-xl font-light font-['DM_Sans'] leading-[30px]">+412 901 774 764</div>
+                    <div class=" text-[#e9e5e5] text-xl font-light font-['DM_Sans'] leading-[30px]">info@lavarch.com</div>
+                    
+                </div>
+                
             </div>
         </div>
     </div>
 
-    <div class="h-0.5 bg-[#E9E5E5] mt-1 lg:mt-20 w-[100%]"></div>
-</div>
+    <div class="z-50 mt-15" id="progressBar">
+        <div class="h-0.5 bg-[#E9E5E5]"></div>
+        <div class="h-[3px] bg-[#FFF] -mt-0.5 progress left-0 hidden"></div>
+    </div>
 
-<!--Where to find us -->
-<div class="flex flex-col mt-12 gap-4 location">
+    <!--Where to find us -->
+<div class="flex flex-col mt-15 gap-4 location">
     <div
-        class="text-[#1E1E1E] font-dmSans text-[3.5rem] font-bold leading-[5.25rem] tracking-[-0.0665rem] uppercase hidden lg:inline-block"
+        class="text-[#FFF] font-dmSans text-[3.5rem] font-bold leading-[5.25rem] tracking-[-0.0665rem] uppercase hidden lg:inline-block"
     >
         kde nás nájdete
     </div>
@@ -291,205 +213,19 @@ import { Image } from 'astro:assets';
             </div>
         </div>
      </div>
+</div>
 
 <style>
-    .info-circle{
+.info-circle{
         pointer-events: all;
 
     }
     .info-circle:hover{
         cursor: pointer;
     }
-
-    
-    
-    .active-content {
-        color: #1e1e1e;
-        font-family: "DM Sans";
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 150%; /* 30px */
-        letter-spacing: -0.38px;
-        text-decoration-line: underline;
-        text-decoration-style: solid;
-        text-decoration-skip-ink: auto;
-        text-decoration-thickness: auto;
-        text-underline-offset: 45%; /* 9px */
-        text-underline-position: from-font;
-    }
-    .content-hover:hover {
-        color: #1e1e1e;
-        font-family: "DM Sans";
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 150%; /* 30px */
-        letter-spacing: -0.38px;
-        text-decoration-line: underline;
-        text-decoration-style: solid;
-        text-decoration-skip-ink: auto;
-        text-decoration-thickness: auto;
-        text-underline-offset: 45%; /* 9px */
-        text-underline-position: from-font;
-    }
-    @media (max-width: 1023px) {
-    .mobileContent{
-		flex-direction: column;
-        align-items: center;
-        gap: 2rem;
-	}
-
-    .mobileMargin{
-        margin-top:1rem;
-    }
-
-    .mobileContentPart{
-        width: 100%;
-        justify-content: center;
-    }
-
-	.mobileContentReverse{
-		flex-direction: column-reverse;
-        align-items: center;
-        gap: 2rem;
-	}
-    }
-
-    @media (max-width: 622px) {
-    .mobileContent{
-		flex-direction: column;
-        align-items: center;
-        gap: 2rem;
-	}
-
-    .mobileContentPart{
-        width: 100%;
-        justify-content: center;
-        
-    }
-
-    .mobileText{
-        color: #1E1E1E;
-font-family: "DM Sans";
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: 150%; /* 24px */
-letter-spacing: -0.304px;
-    }
-
-    .mobileTextHeader{
-        color: #1E1E1E;
-font-family: "DM Sans";
-font-size: 36px;
-font-style: normal;
-font-weight: 700;
-line-height: 120%; /* 43.2px */
-letter-spacing: -0.684px;
-text-transform: uppercase;
-    }
-
-    .mobileTextLinks{
-        color: #000;
-font-family: "DM Sans";
-font-size: 16px;
-font-style: normal;
-font-weight: 500;
-line-height: 150%; /* 24px */
-letter-spacing: -0.304px;
-    }
-
-	.mobileContentReverse{
-		flex-direction: column-reverse;
-        align-items: center;
-        gap: 2rem;
-	}
-    
-    .mobileNavigation{
-        color: #E9E5E5;
-font-family: "DM Sans";
-font-size: 16px;
-font-style: normal;
-font-weight: 500;
-line-height: 150%; /* 24px */
-letter-spacing: -0.304px;
-    }
-    .active-content {
-        color: #1E1E1E;
-font-family: "DM Sans";
-font-size: 16px;
-font-style: normal;
-font-weight: 500;
-line-height: 150%; /* 24px */
-letter-spacing: -0.304px;
-text-decoration-line: underline;
-text-decoration-style: solid;
-text-decoration-skip-ink: auto;
-text-decoration-thickness: auto;
-text-underline-offset: 45%; /* 7.2px */
-text-underline-position: from-font;
-    }
-    .content-hover:hover {
-        color: #1e1e1e;
-        font-family: "DM Sans";
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 150%; /* 30px */
-        letter-spacing: -0.304px;
-        text-decoration-line: underline;
-        text-decoration-style: solid;
-        text-decoration-skip-ink: auto;
-        text-decoration-thickness: auto;
-        text-underline-offset: 45%; /* 9px */
-        text-underline-position: from-font;
-    }
-
-    
-    .navigationHeader{
-        color: #1E1E1E;
-font-family: "DM Sans";
-font-size: 40px;
-font-style: normal;
-font-weight: 700;
-line-height: 150%; /* 60px */
-letter-spacing: -0.76px;
-text-transform: uppercase;
-    }
-    }
 </style>
 
 <script>
-   document.addEventListener("DOMContentLoaded", function () {
-    const sections = document.querySelectorAll("div[id]"); // Select sections with IDs
-    const navItems = document.querySelectorAll(".nav-item"); // Select nav items
-
-    const observerOptions = {
-        root: null, // Viewport as root
-        rootMargin: "-50% 0px -50% 0px", // Trigger when section is in the middle
-        threshold: 0
-    };
-
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Remove active class from all items
-                navItems.forEach(item => item.classList.remove("active-content"));
-
-                // Add active class to the matching nav item
-                const activeNavItem = document.querySelector(`#nav-${entry.target.id}`);
-                if (activeNavItem) {
-                    activeNavItem.classList.add("active-content");
-                }
-            }
-        });
-    }, observerOptions);
-
-    // Observe each section
-    sections.forEach(section => observer.observe(section));
-});
-
 function addHoverEffect(circleId: string, groupId: string) {
         const circle = document.getElementById(circleId);
         const group = document.getElementById(groupId);

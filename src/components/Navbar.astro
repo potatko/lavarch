@@ -45,12 +45,12 @@ buttons.forEach((button) => {
   });
 </script>
 
-<nav class={`${currentPage === 'index' ? 'bg-transparent' : 'bg-white'}  sticky top-0 z-50}`}>
+<nav class={`${currentPage === 'index' ? 'bg-transparent' : 'bg-white'} sticky top-0 z-50}`}>
 	<div
 		class="max-w-[100%] flex flex-wrap items-center justify-between mx-auto pt-4 p-0 md:p-4 z-100 relative"
 	>
-		<a href="#" class="flex items-center space-x-3 rtl:space-x-reverse mobileLogo" id="logo">
-			<Image src={logoSrc} alt="Logo" />
+		<a href="/" class="flex items-center space-x-3 rtl:space-x-reverse mobileLogo" id="logo">
+			<Image src={logoSrc} alt="Logo" class={"md:w-[184px] md:h-[50px] w-[99px] h-[27px]"}/>
 		</a>
 		<div
 			class="flex flex-wrap items-center  justify-between md:w-auto lg:gap-20"
@@ -58,11 +58,11 @@ buttons.forEach((button) => {
 			<div
 				class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse"
 			>
-				<div
+				<a href="/kontakt"
 					class={`hidden  lg:inline-flex  items-center justify-center gap-2.5 px-7 py-2.5  ${currentPage === 'index' ? 'bg-white/20 ' : 'bg-[#1E1E1E]'} text-white font-dmSans text-[1.25rem] font-light leading-[1.5rem] uppercase`}
 				>
 					KONTAKT
-				</div>
+	</a>
 				<button
 					data-collapse-toggle="navbar-cta"
 					type="button"
@@ -79,7 +79,7 @@ buttons.forEach((button) => {
 				</button>
 			</div>
 			<div
-				class="items-center justify-between hidden w-full lg:flex md:w-auto md:order-1  centerMobile"
+				class=" items-center justify-between hidden w-full lg:flex md:w-auto md:order-1  centerMobile"
 				id="navbar-cta"
 			>
 			<ul class={` linksMobile flex flex-col font-medium p-4 md:p-0 mt-4  rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 ${currentPage === 'index' ? 'bg-transparent' : 'md:bg-white'}  xl:ml-32`}>
@@ -123,7 +123,7 @@ buttons.forEach((button) => {
 	>
 	{title}
 	</div>
-	<div class={`sticky top-20 z-50 ${currentPage === 'index' ? 'hidden' : 'block'}`} id="progressBar">
+	<div class={`sticky top-17 md:top-20 z-50 ${currentPage === 'index' ? 'hidden' : 'block'}`} id="progressBar">
 		<div class="h-0.5 bg-[#E9E5E5] mt-4 lg:mt-20"></div>
 		<div class="h-[3px] bg-[#1E1E1E] -mt-0.5 progress left-0" ></div>
 	</div>

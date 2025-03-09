@@ -1,63 +1,1063 @@
 ---
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Logo from "../assets/hlavne_logo-transparent-black 1.png";
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 import homePage from "../assets/homePage.png";
 import sipkaHore from "../assets/sipkaOffice.png";
 import sipkaWhite from "../assets/sipkaWhite.png";
 import c013 from "../assets/c-013.png";
+import rd6b from "../assets/rd-6-b-03.png";
+import rdkb from "../assets/rd-kb-013.png";
+import sipkaRight from "../assets/sipkaRight.svg";
+import sipkaLeft from "../assets/sipkaLeft.svg";
+import interierObyvacka from "../assets/interier-lavarch-obyvacka-mierova-31.png";
+import vsetkyProjekty from "../assets/rd-standard-57-extended-1.png";
+import recenziePFP from "../assets/recenziaPFP.png";
+import stars from "../assets/stars.svg";
+import done from "../assets/done.png";
+import rdstandard57extended1 from "../assets/rd-standard-57-extended-1-mobile.png";
+import interierObyvackaMobile from "../assets/interier-lavarch-obyvacka-mierova-31-mobile.png";
 ---
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    console.log("using GSAP: ", gsap.version);
+    document.addEventListener("DOMContentLoaded", () => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const animateText = (selector: string, textColor: string) => {
+        const textElements = document.querySelectorAll(selector);
+
+        if (textElements.length === 0) return; // Stop if no elements found
+
+        textElements.forEach((textElement) => {
+            let combinedText = "";
+
+            // Collect text content
+            textElement.childNodes.forEach((child: Node) => {
+                if (child.nodeType === Node.TEXT_NODE) {
+                    combinedText += (child.textContent || "").trim();
+                } else if (child.nodeType === Node.ELEMENT_NODE) {
+                    combinedText += (child.textContent || "").trim();
+                }
+            });
+
+            // Wrap each letter in a <span>
+            textElement.innerHTML = combinedText
+                .split("")
+                .map((char) => `<span>${char}</span>`)
+                .join("");
+
+            const chars = textElement.querySelectorAll("span");
+
+            // Create a unique timeline for each text element
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: textElement, // Use each element as its own trigger
+                    start: "top 80%", // Adjust trigger start for visibility
+                    end: "bottom 50%",
+                    scrub: true,
+                },
+            }).from(
+                chars,
+                {
+                    color: textColor,
+                    opacity: 0.2,
+                    stagger: 0.05,
+                    duration: 1,
+                },
+                "+=0.2"
+            );
+        });
+    };
+
+    // Run animations for both selectors
+    animateText(".animate", "#1e1e1e"); // Dark color for desktop
+    animateText(".animateMobile", "#FFF"); // Light color for mobile
+});
+
+   
+</script>
 
 <div class="homepage h-screen -mt-22 md:-mt-34">
     <div class="max-w-[88%] mx-auto px-4">
-    <div class="pl-20">
-        <div class="text-white text-[90px] font-bold font-['DM Sans'] capitalize leading-[135px] pt-[317px] ">BÝVANIE  BEZ<br/>KOMPROMISOV</div>
-        <div class="text-white text-xl font-normal font-['DM Sans'] leading-[30px] pt-3">Navrhneme vám domov, ktorý odráža vašu osobnosť a túžby, tvoríme modernú funkčnú <br/>architektúru, ktorá je energeticky úsporná a myslí na každý detail.</div>
-        <div class="flex gap-19 mt-12">
-            <div class=" h-[58px] pl-4 pr-[17px] py-[5px] bg-white/25 justify-center items-center gap-2.5 inline-flex">
-                <div class="text-white text-[30px] font-light font-['DM Sans'] leading-[48px]">VŠETKY PROJEKTY</div>
-                <Image /* src={sipkaWhite} */ alt="sipkaHore" />
+        <div class="lg:pl-20">
+            <div
+                class="text-white text-[40px] leading-[60px] md:text-7xl lg:text-[90px] font-bold font-['DM Sans'] capitalize md:leading-[108px] lg:leading-[135px] pt-[200px] md:pt-[317px]"
+            >
+                BÝVANIE BEZ<br />KOMPROMISOV
             </div>
-            <div class="h-[58px] px-4 py-[5px] bg-white justify-center items-center gap-2.5 inline-flex">
-                <div class="text-[#1e1e1e] text-[32px] font-light font-['DM Sans'] leading-[48px]">O NÁS</div>
-                <Image /* src={sipkaHore} */ alt="sipkaHore" />
+            <div
+                class="text-white text-base md:text-lg lg:text-xl font-normal font-['DM Sans'] lg:leading-[30px] leading-normal md:leading-[27px] pt-3"
+            >
+                Navrhneme vám domov, ktorý odráža vašu osobnosť a túžby, tvoríme
+                modernú funkčnú <br />architektúru, ktorá je energeticky úsporná
+                a myslí na každý detail.
+            </div>
+            <div class="flex gap-6 md:gap-19 md:flex-row flex-col mt-12">
+                <div
+                    class="h-[58px] pl-4 pr-[17px] py-[5px] bg-white/25 justify-center items-center gap-2.5 inline-flex"
+                >
+                    <div
+                        class="text-white text-[25px] md:text-[30px] font-light font-['DM Sans'] leading-[48px]"
+                    >
+                        VŠETKY PROJEKTY
+                    </div>
+                    <Image * src={sipkaWhite} * alt="sipkaHore" />
+                </div>
+                <div
+                    class="h-[58px] px-4 py-[5px] bg-white justify-center items-center gap-2.5 inline-flex"
+                >
+                    <div
+                        class="text-[#1e1e1e] text-[32px] font-light font-['DM Sans'] leading-[48px]"
+                    >
+                        O NÁS
+                    </div>
+                    <Image * src={sipkaHore} * alt="sipkaHore" />
+                </div>
             </div>
         </div>
     </div>
-    
 </div>
 
-</div>
-
-<div class="projekty h-screen ">
-   
-    <div class="max-w-[88%] mx-auto px-4">
-        <div class= "z-50" id="progressBar" >
+<div class="projekty">
+    <div class="max-w-[88%] mx-auto px-4 2xl:max-w-[1500px]">
+        <div class="z-50" id="progressBar">
             <div class="h-0.5 bg-[#E9E5E5] mt-4 lg:mt-20"></div>
-            <div class="h-[3px] bg-[#1E1E1E] -mt-0.5 progress left-0 hidden" ></div>
+            <div class="h-[3px] bg-[#1E1E1E] -mt-0.5 progress left-0 hidden">
+            </div>
         </div>
         <div class="flex justify-between pt-16">
-            <div class="text-[#1e1e1e] text-[56px] font-bold font-['DM Sans'] uppercase leading-[84px]">NaŠe najnovŠie projekty</div>
-            <div class="flex justify-center items-center gap-2.5">
-                <div class="text-[#1e1e1e] text-xl font-light font-['DM Sans'] leading-[30px]">VŠETKY</div>
-            <Image /* src={sipkaHore} */ alt="sipkaHore" class={"w-[10px] h-[10px]"}/>
+            <div
+                class="text-[#1e1e1e] text-2xl leading-9 md:text-5xl lg:text-[56px] font-bold font-['DM Sans'] uppercase md:leading-[72px] lg:leading-[84px]"
+            >
+                NaŠe najnovŠie projekty
             </div>
-            
+            <div class="justify-center items-center gap-2.5 lg:flex flex md:hidden">
+                <div
+                    class="text-[#1e1e1e] text-xl font-light font-['DM Sans'] leading-[30px]"
+                >
+                    VŠETKY
+                </div>
+                <Image
+                    *
+                    src={sipkaHore}
+                    *
+                    alt="sipkaHore"
+                    class={"w-[10px] h-[10px]"}
+                />
+            </div>
         </div>
-        <div class="flex mt-13">
-            <div class="projekt flex flex-col gap-2 justify-center items-center">
-                <Image src={c013} alt={"c013"}/>
+        <div class="flex mt-13 gap-4 overflow-x-scroll whitespace-nowrap noScrollbar">
+            <div
+                class="min-w-[312px] w-[312px] md:min-w-[405px] projekt flex flex-col gap-2 justify-center items-center"
+                id="natalia"
+            >
+                <Image src={c013} alt={"c013"} />
+                <div
+                    class="relative text-center justify-start text-[#1e1e1e] text-xl font-medium font-['DM_Sans'] uppercase leading-[30px]"
+                >
+                    BUNGALOV NATÁLIA
+                </div>
+                <div class="flex items-center gap-4">
+                    <div
+                        class="relative justify-start text-[#626262] text-xs font-light font-['DM_Sans'] capitalize leading-[18px] tracking-widest"
+                    >
+                        1 pODLAŽIE
+                    </div>
+                    <div class="w-1.5 h-1.5 relative bg-[#626262]"></div>
+                    <div
+                        class="relative justify-start text-[#626262] text-xs font-light font-['DM_Sans'] capitalize leading-[18px] tracking-widest"
+                    >
+                        2 iZBY
+                    </div>
+                    <div class="w-1.5 h-1.5 relative bg-[#626262]"></div>
+                    <div
+                        class="relative justify-start text-[#626262] text-xs font-light font-['DM_Sans'] capitalize leading-[18px] tracking-widest"
+                    >
+                        48 m²
+                    </div>
+                </div>
+                <div
+                    class="w-[66.89px] relative justify-start text-[#626262] text-[10px] font-light font-['DM_Sans'] uppercase leading-[15px] tracking-[4px]"
+                >
+                    katalóg
+                </div>
             </div>
-            
+
+            <!--projekt 2-->
+            <div
+                class="min-w-[312px] w-[312px] md:min-w-[405px] projekt flex flex-col gap-2 justify-center items-center"
+                id="natalia"
+            >
+                <Image src={rdkb} alt={"rdkb"} />
+                <div
+                    class="relative text-center justify-start text-[#1e1e1e] text-xl font-medium font-['DM_Sans'] uppercase leading-[30px]"
+                >
+                    Vila tugendhat
+                </div>
+                <div class="flex items-center gap-4">
+                    <div
+                        class="relative justify-start text-[#626262] text-xs font-light font-['DM_Sans'] capitalize leading-[18px] tracking-widest"
+                    >
+                        2018
+                    </div>
+                    <div class="w-1.5 h-1.5 relative bg-[#626262]"></div>
+                    <div
+                        class="relative justify-start text-[#626262] text-xs font-light font-['DM_Sans'] capitalize leading-[18px] tracking-widest"
+                    >
+                        BRATISLAVA
+                    </div>
+                </div>
+                <div
+                    class="relative justify-start text-[#626262] text-[10px] font-light font-['DM_Sans'] uppercase leading-[15px] tracking-[4px]"
+                >
+                    aRCHITEKTÚRA
+                </div>
+            </div>
+
+            <!--projekt 3-->
+            <div
+                class="min-w-[312px] w-[312px] md:min-w-[405px] projekt flex flex-col gap-2 justify-center items-center"
+                id="natalia"
+            >
+                <Image src={rd6b} alt={"rd6b"} />
+                <div
+                    class="relative text-center justify-start text-[#1e1e1e] text-xl font-medium font-['DM_Sans'] uppercase leading-[30px]"
+                >
+                    Vila tugendhat
+                </div>
+                <div class="flex items-center gap-4">
+                    <div
+                        class="relative justify-start text-[#626262] text-xs font-light font-['DM_Sans'] capitalize leading-[18px] tracking-widest"
+                    >
+                        2018
+                    </div>
+                    <div class="w-1.5 h-1.5 relative bg-[#626262]"></div>
+                    <div
+                        class="relative justify-start text-[#626262] text-xs font-light font-['DM_Sans'] capitalize leading-[18px] tracking-widest"
+                    >
+                        BRATISLAVA
+                    </div>
+                </div>
+                <div
+                    class="relative justify-start text-[#626262] text-[10px] font-light font-['DM_Sans'] uppercase leading-[15px] tracking-[4px]"
+                >
+                    aRCHITEKTÚRA
+                </div>
+            </div>
+
+            <!--projekt 4-->
+            <div
+                class="min-w-[312px] w-[312px] md:min-w-[405px] projekt flex flex-col gap-2 justify-center items-center"
+                id="natalia"
+            >
+                <Image src={rd6b} alt={"rd6b"} />
+                <div
+                    class="relative text-center justify-start text-[#1e1e1e] text-xl font-medium font-['DM_Sans'] uppercase leading-[30px]"
+                >
+                    Vila tugendhat
+                </div>
+                <div class="flex items-center gap-4">
+                    <div
+                        class="relative justify-start text-[#626262] text-xs font-light font-['DM_Sans'] capitalize leading-[18px] tracking-widest"
+                    >
+                        2018
+                    </div>
+                    <div class="w-1.5 h-1.5 relative bg-[#626262]"></div>
+                    <div
+                        class="relative justify-start text-[#626262] text-xs font-light font-['DM_Sans'] capitalize leading-[18px] tracking-widest"
+                    >
+                        BRATISLAVA
+                    </div>
+                </div>
+                <div
+                    class="relative justify-start text-[#626262] text-[10px] font-light font-['DM_Sans'] uppercase leading-[15px] tracking-[4px]"
+                >
+                    aRCHITEKTÚRA
+                </div>
+            </div>
+
+            <!--projekt 5-->
+            <div
+                class="min-w-[312px] w-[312px] md:min-w-[405px] projekt flex flex-col gap-2 justify-center items-center"
+                id="natalia"
+            >
+                <Image src={rd6b} alt={"rd6b"} />
+                <div
+                    class="relative text-center justify-start text-[#1e1e1e] text-xl font-medium font-['DM_Sans'] uppercase leading-[30px]"
+                >
+                    Vila tugendhat
+                </div>
+                <div class="flex items-center gap-4">
+                    <div
+                        class="relative justify-start text-[#626262] text-xs font-light font-['DM_Sans'] capitalize leading-[18px] tracking-widest"
+                    >
+                        2018
+                    </div>
+                    <div class="w-1.5 h-1.5 relative bg-[#626262]"></div>
+                    <div
+                        class="relative justify-start text-[#626262] text-xs font-light font-['DM_Sans'] capitalize leading-[18px] tracking-widest"
+                    >
+                        BRATISLAVA
+                    </div>
+                </div>
+                <div
+                    class="relative justify-start text-[#626262] text-[10px] font-light font-['DM_Sans'] uppercase leading-[15px] tracking-[4px]"
+                >
+                    aRCHITEKTÚRA
+                </div>
+            </div>
+
+            <!--projekt 6-->
+            <div
+                class="min-w-[312px] w-[312px] md:min-w-[405px] projekt flex flex-col gap-2 justify-center items-center"
+                id="natalia"
+            >
+                <Image src={rd6b} alt={"rd6b"} />
+                <div
+                    class="relative text-center justify-start text-[#1e1e1e] text-xl font-medium font-['DM_Sans'] uppercase leading-[30px]"
+                >
+                    Vila tugendhat
+                </div>
+                <div class="flex items-center gap-4">
+                    <div
+                        class="relative justify-start text-[#626262] text-xs font-light font-['DM_Sans'] capitalize leading-[18px] tracking-widest"
+                    >
+                        2018
+                    </div>
+                    <div class="w-1.5 h-1.5 relative bg-[#626262]"></div>
+                    <div
+                        class="relative justify-start text-[#626262] text-xs font-light font-['DM_Sans'] capitalize leading-[18px] tracking-widest"
+                    >
+                        BRATISLAVA
+                    </div>
+                </div>
+                <div
+                    class="relative justify-start text-[#626262] text-[10px] font-light font-['DM_Sans'] uppercase leading-[15px] tracking-[4px]"
+                >
+                    aRCHITEKTÚRA
+                </div>
+            </div>
+        </div>
+        <div class="flex gap-18 mt-12">
+            <Image src={sipkaLeft} alt={"sipkaLeft"} />
+            <Image src={sipkaRight} alt={"sipkaRight"} />
+        </div>
+
+        <div class="z-50" id="progressBar">
+            <div class="h-0.5 bg-[#E9E5E5] mt-4 lg:mt-10"></div>
+            <div class="h-[3px] bg-[#1E1E1E] -mt-0.5 progress left-0 hidden">
+            </div>
+        </div>
+
+        <div class="flex mt-13 gap-4 overflow-x-auto whitespace-nowrap noScrollbar">
+            <div
+                class="min-w-[312px] w-[312px] md:min-w-[405px] projekt flex flex-col gap-2 justify-center items-center"
+                id="natalia"
+            >
+                <Image src={c013} alt={"c013"} />
+                <div
+                    class="relative text-center justify-start text-[#1e1e1e] text-xl font-medium font-['DM_Sans'] uppercase leading-[30px]"
+                >
+                    BUNGALOV NATÁLIA
+                </div>
+                <div class="flex items-center gap-4">
+                    <div
+                        class="relative justify-start text-[#626262] text-xs font-light font-['DM_Sans'] capitalize leading-[18px] tracking-widest"
+                    >
+                        1 pODLAŽIE
+                    </div>
+                    <div class="w-1.5 h-1.5 relative bg-[#626262]"></div>
+                    <div
+                        class="relative justify-start text-[#626262] text-xs font-light font-['DM_Sans'] capitalize leading-[18px] tracking-widest"
+                    >
+                        2 iZBY
+                    </div>
+                    <div class="w-1.5 h-1.5 relative bg-[#626262]"></div>
+                    <div
+                        class="relative justify-start text-[#626262] text-xs font-light font-['DM_Sans'] capitalize leading-[18px] tracking-widest"
+                    >
+                        48 m²
+                    </div>
+                </div>
+                <div
+                    class="w-[66.89px] relative justify-start text-[#626262] text-[10px] font-light font-['DM_Sans'] uppercase leading-[15px] tracking-[4px]"
+                >
+                    katalóg
+                </div>
+            </div>
+
+            <!--projekt 2-->
+            <div
+                class="min-w-[312px] w-[312px] md:min-w-[405px] projekt flex flex-col gap-2 justify-center items-center"
+                id="natalia"
+            >
+                <Image src={rdkb} alt={"rdkb"} />
+                <div
+                    class="relative text-center justify-start text-[#1e1e1e] text-xl font-medium font-['DM_Sans'] uppercase leading-[30px]"
+                >
+                    Vila tugendhat
+                </div>
+                <div class="flex items-center gap-4">
+                    <div
+                        class="relative justify-start text-[#626262] text-xs font-light font-['DM_Sans'] capitalize leading-[18px] tracking-widest"
+                    >
+                        2018
+                    </div>
+                    <div class="w-1.5 h-1.5 relative bg-[#626262]"></div>
+                    <div
+                        class="relative justify-start text-[#626262] text-xs font-light font-['DM_Sans'] capitalize leading-[18px] tracking-widest"
+                    >
+                        BRATISLAVA
+                    </div>
+                </div>
+                <div
+                    class="relative justify-start text-[#626262] text-[10px] font-light font-['DM_Sans'] uppercase leading-[15px] tracking-[4px]"
+                >
+                    aRCHITEKTÚRA
+                </div>
+            </div>
+
+            <!--projekt 3-->
+            <div
+                class="min-w-[312px] w-[312px] md:min-w-[405px] projekt flex flex-col gap-2 justify-center items-center"
+                id="natalia"
+            >
+                <Image src={rd6b} alt={"rd6b"} />
+                <div
+                    class="relative text-center justify-start text-[#1e1e1e] text-xl font-medium font-['DM_Sans'] uppercase leading-[30px]"
+                >
+                    Vila tugendhat
+                </div>
+                <div class="flex items-center gap-4">
+                    <div
+                        class="relative justify-start text-[#626262] text-xs font-light font-['DM_Sans'] capitalize leading-[18px] tracking-widest"
+                    >
+                        2018
+                    </div>
+                    <div class="w-1.5 h-1.5 relative bg-[#626262]"></div>
+                    <div
+                        class="relative justify-start text-[#626262] text-xs font-light font-['DM_Sans'] capitalize leading-[18px] tracking-widest"
+                    >
+                        BRATISLAVA
+                    </div>
+                </div>
+                <div
+                    class="relative justify-start text-[#626262] text-[10px] font-light font-['DM_Sans'] uppercase leading-[15px] tracking-[4px]"
+                >
+                    aRCHITEKTÚRA
+                </div>
+            </div>
+
+            <!--projekt 4-->
+            <div
+                class="min-w-[312px] w-[312px] md:min-w-[405px] projekt flex flex-col gap-2 justify-center items-center"
+                id="natalia"
+            >
+                <Image src={rd6b} alt={"rd6b"} />
+                <div
+                    class="relative text-center justify-start text-[#1e1e1e] text-xl font-medium font-['DM_Sans'] uppercase leading-[30px]"
+                >
+                    Vila tugendhat
+                </div>
+                <div class="flex items-center gap-4">
+                    <div
+                        class="relative justify-start text-[#626262] text-xs font-light font-['DM_Sans'] capitalize leading-[18px] tracking-widest"
+                    >
+                        2018
+                    </div>
+                    <div class="w-1.5 h-1.5 relative bg-[#626262]"></div>
+                    <div
+                        class="relative justify-start text-[#626262] text-xs font-light font-['DM_Sans'] capitalize leading-[18px] tracking-widest"
+                    >
+                        BRATISLAVA
+                    </div>
+                </div>
+                <div
+                    class="relative justify-start text-[#626262] text-[10px] font-light font-['DM_Sans'] uppercase leading-[15px] tracking-[4px]"
+                >
+                    aRCHITEKTÚRA
+                </div>
+            </div>
+
+            <!--projekt 5-->
+            <div
+                class="min-w-[312px] w-[312px] md:min-w-[405px] projekt flex flex-col gap-2 justify-center items-center"
+                id="natalia"
+            >
+                <Image src={rd6b} alt={"rd6b"} />
+                <div
+                    class="relative text-center justify-start text-[#1e1e1e] text-xl font-medium font-['DM_Sans'] uppercase leading-[30px]"
+                >
+                    Vila tugendhat
+                </div>
+                <div class="flex items-center gap-4">
+                    <div
+                        class="relative justify-start text-[#626262] text-xs font-light font-['DM_Sans'] capitalize leading-[18px] tracking-widest"
+                    >
+                        2018
+                    </div>
+                    <div class="w-1.5 h-1.5 relative bg-[#626262]"></div>
+                    <div
+                        class="relative justify-start text-[#626262] text-xs font-light font-['DM_Sans'] capitalize leading-[18px] tracking-widest"
+                    >
+                        BRATISLAVA
+                    </div>
+                </div>
+                <div
+                    class="relative justify-start text-[#626262] text-[10px] font-light font-['DM_Sans'] uppercase leading-[15px] tracking-[4px]"
+                >
+                    aRCHITEKTÚRA
+                </div>
+            </div>
+
+            <!--projekt 6-->
+            <div
+                class="min-w-[312px] w-[312px] md:min-w-[405px] projekt flex flex-col gap-2 justify-center items-center"
+                id="natalia"
+            >
+                <Image src={rd6b} alt={"rd6b"} />
+                <div
+                    class="relative text-center justify-start text-[#1e1e1e] text-xl font-medium font-['DM_Sans'] uppercase leading-[30px]"
+                >
+                    Vila tugendhat
+                </div>
+                <div class="flex items-center gap-4">
+                    <div
+                        class="relative justify-start text-[#626262] text-xs font-light font-['DM_Sans'] capitalize leading-[18px] tracking-widest"
+                    >
+                        2018
+                    </div>
+                    <div class="w-1.5 h-1.5 relative bg-[#626262]"></div>
+                    <div
+                        class="relative justify-start text-[#626262] text-xs font-light font-['DM_Sans'] capitalize leading-[18px] tracking-widest"
+                    >
+                        BRATISLAVA
+                    </div>
+                </div>
+                <div
+                    class="relative justify-start text-[#626262] text-[10px] font-light font-['DM_Sans'] uppercase leading-[15px] tracking-[4px]"
+                >
+                    aRCHITEKTÚRA
+                </div>
+            </div>
+        </div>
+        <div class="flex gap-18 mt-12">
+            <Image src={sipkaLeft} alt={"sipkaLeft"} />
+            <Image src={sipkaRight} alt={"sipkaRight"} />
+        </div>
+        <div class="z-50 hidden lg:block" id="progressBar">
+            <div class="h-0.5 bg-[#E9E5E5] mt-4 lg:mt-10"></div>
+            <div class="h-[3px] bg-[#1E1E1E] -mt-0.5 progress left-0 hidden">
+            </div>
+        </div>
+        <div
+            class="lg:float-none md:float-right cursor-pointer mt-9 px-4 py-[5px] bg-black/5 inline-flex justify-center items-center gap-2.5"
+        >
+            <div
+                class="relative justify-start text-[#1e1e1e] text-xl md:text-[32px] font-light font-['DM_Sans'] leading-[48px]"
+            >
+                VŠETKY PROJEKTY
+            </div>
+            <Image src={sipkaHore} alt="sipkaHore" />
+        </div>
+    </div>
+</div>
+
+<div class="lg:hidden md:mt-50 mt-20"></div>
+
+<div class="ponuka lg:h-screen mb-20">
+    <div class="max-w-[88%] mx-auto px-4 2xl:max-w-[1500px] hidden lg:block">
+        <div class="z-50 " id="progressBar">
+            <div class="h-0.5 bg-[#E9E5E5] mt-4 lg:mt-10"></div>
+            <div class="h-[3px] bg-[#1E1E1E] -mt-0.5 progress left-0 hidden">
+            </div>
+        </div>
+        <div
+            class="mt-16 relative justify-start text-[#1e1e1e] text-5xl font-black font-['DM_Sans'] uppercase leading-[72px]"
+        >
+            Čo ponúkame
+        </div>
+        <div class="flex lg:flex-row flex-col w-full mt-12 gap-4 justify-between">
+            <div class="flex flex-col gap-2">
+                <Image src={vsetkyProjekty} alt={"vsetky projekty"} />
+                <div
+                    class="relative justify-start text-black text-[32px] font-bold font-['DM_Sans'] uppercase leading-[48px]"
+                >
+                    vŠETKY PROJEKTY
+                </div>
+                <div class="moreInfo">
+                    <div class="flex items-center justify-between">
+                        <div
+                            class="h-10 relative justify-start text-black text-[32px] font-bold font-['DM_Sans'] uppercase leading-[48px]"
+                        >
+                            vŠETKY PROJEKTY
+                        </div>
+                        <Image src={sipkaHore} alt="sipkaHore" />
+                    </div>
+                    <div
+                        class="relative justify-start text-[#1e1e1e] text-xl font-light font-['DM_Sans'] leading-[30px]"
+                    >
+                        Potrebujete stavebný projekt pre Váš domov<br />alebo
+                        riešenie pre Váš interiér? Sme tu pre Vás.
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-2">
+                <Image src={interierObyvacka} alt={"Služby"} />
+                <div
+                    class="relative justify-start text-black text-[32px] font-bold font-['DM_Sans'] uppercase leading-[48px]"
+                >
+                    sLUŽBY
+                </div>
+            </div>
         </div>
     </div>
 
+    <!--mobile -->
+    <div class="max-w-[88%] mx-auto px-4 2xl:max-w-[1500px] lg:hidden">
+        <div class="z-50 " id="progressBar">
+            <div class="h-0.5 bg-[#E9E5E5] mt-4 lg:mt-10"></div>
+            <div class="h-[3px] bg-[#1E1E1E] -mt-0.5 progress left-0 hidden">
+            </div>
+        </div>
+        <div
+            class="mt-5 md:mt-16 relative justify-start text-[#1e1e1e] text-2xl md:text-5xl font-black font-['DM_Sans'] uppercase leading-[72px]"
+        >
+            Čo ponúkame
+        </div>
+        <div class="flex lg:flex-row flex-col w-full md:mt-12 gap-15 justify-between">
+            <div class="flex flex-col gap-2 w-full">
+                <Image src={rdstandard57extended1} alt={"vsetky projekty"} />
+                <div class="flex items-center justify-between">
+                    <div
+                        class="h-10 relative justify-start text-black text-xl md:text-[32px] font-bold font-['DM_Sans'] uppercase leading-[48px]"
+                    >
+                        vŠETKY PROJEKTY
+                    </div>
+                    <Image src={sipkaHore} alt="sipkaHore" />
+                </div>
+                
+            </div>
+            <div class="flex flex-col gap-2">
+                <Image src={interierObyvackaMobile} alt={"Služby"} />
+                <div class="flex items-center justify-between">
+                    <div
+                        class="h-10 relative justify-start text-black text-xl md:text-[32px] font-bold font-['DM_Sans'] uppercase leading-[48px]"
+                    >
+                        SLUŽBY
+                    </div>
+                    <Image src={sipkaHore} alt="sipkaHore" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="filozofia lg:h-screen  md:bg-[#1e1e1e]">
+    <div class="max-w-[88%] mx-auto px-4 2xl:max-w-[1500px]">
+        <div class="z-50 pt-10" id="progressBar">
+            <div class="h-0.5 bg-[#E9E5E5]"></div>
+            <div class="h-[3px] bg-[#FFF] -mt-0.5 progress left-0 hidden"></div>
+        </div>
+        <div
+            class="mt-16 relative justify-start text-black md:text-[#e9e5e5] text-[56px] font-bold font-['DM_Sans'] uppercase leading-[84px]"
+        >
+            Kto sme
+        </div>
+        <div class="wrapper flex mt-2 md:mt-16 lg:mt-30">
+            <div
+                class="animate text-[#FFF] hidden md:block text-[32px] font-medium font-['DM_Sans'] leading-[48px]"
+            >
+                Sme architektonicko-konštrukčný ateliér, ktorý poskytuje služby
+                po celom území Slovenska. Charakterizuje nás láska k minimalizmu
+                a dizajnu, ktorý je nadčasový. Vo svojich návrhoch prepájame
+                krásu architektúry s plnou funkčnosťou priestoru. Klientom
+                poskytujeme služby v oblasti vytvárania projektov obytných i
+                komerčných priestorov.
+            </div>
+            <div
+                class="animateMobile md:hidden text-black text-[22px] font-medium font-['DM_Sans'] leading-[33px]"
+            >
+                Sme architektonicko-konštrukčný ateliér, ktorý poskytuje služby
+                po celom území Slovenska. Charakterizuje nás láska k minimalizmu
+                a dizajnu, ktorý je nadčasový. Vo svojich návrhoch prepájame
+                krásu architektúry s plnou funkčnosťou priestoru. Klientom
+                poskytujeme služby v oblasti vytvárania projektov obytných i
+                komerčných priestorov.
+            </div>
+        </div>
+
+        <div
+            class="cursor-pointer mt-16 lg:mt-30 px-4 py-[5px] bg-white/5 inline-flex justify-center items-center gap-2.5"
+        >
+            <div
+                class="relative justify-start text-[#e9e5e5] text-[32px] font-light font-['DM_Sans'] uppercase leading-[48px]"
+            >
+                viac o nás
+            </div>
+            <Image src={sipkaWhite} alt="sipkaHore" />
+        </div>
+    </div>
+</div>
+
+<div class="recenzia">
+    <div class="max-w-[88%] mx-auto px-4 2xl:max-w-[1500px]">
+        <div class="z-50" id="progressBar">
+            <div class="h-0.5 bg-[#E9E5E5] mt-4 lg:mt-10"></div>
+            <div class="h-[3px] bg-[#1E1E1E] -mt-0.5 progress left-0 hidden">
+            </div>
+        </div>
+        <div class="flex justify-between mt-16">
+            <div
+                class="relative  justify-start text-[#1e1e1e] text-2xl md:text-[56px] font-black font-['DM_Sans'] uppercase leading-[84px]"
+            >
+                VAŠE recenzie
+            </div>
+            <div class="gap-20 hidden md:flex">
+                <Image src={sipkaLeft} alt={"sipkaLeft"} />
+                <Image src={sipkaRight} alt={"sipkaRight"} />
+            </div>
+            <div class="flex gap-2.5 items-center md:hidden">
+                <div
+                    class="relative justify-start text-[#1e1e1e] text-xl font-light font-['DM_Sans'] uppercase leading-[48px]"
+                >
+                    VŠETKY
+                </div>
+                <Image src={sipkaHore} alt="sipkaHore" class={"w-[11px] h-[11px]"} />
+            </div>
+        </div>
+    </div>
+
+    <div
+        class="scrollRecenzie hidden gap-18 md:flex mt-16 whitespace-nowrap overflow-x-auto noScrollbar"
+    >
+        <div
+            class="recenzia min-w-[617px] w-[617px] lg:min-w-[710px] h-[314px] min-h-[314px] lg:w-[710px] bg-[#1e1e1e] flex flex-col px-4 py-8 gap-1"
+        >
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-4">
+                    <Image src={recenziePFP} alt={"recenzie fotka"} />
+
+                    <div
+                        class="relative justify-start text-[#e9e5e5] text-[32px] font-bold font-['DM_Sans'] leading-[48px]"
+                    >
+                        ING. LUKÁŠ RUSSIN
+                    </div>
+                </div>
+                <Image
+                    src={sipkaWhite}
+                    alt={"sipkaHore"}
+                    class={"w-[23px] h-[23px]"}
+                />
+            </div>
+            <div
+                class="mt-4 relative justify-start text-[#e9e5e5] text-xs font-light font-['DM_Sans'] leading-[18px]"
+            >
+                15.4.2022
+            </div>
+            <div
+                class="relative justify-start text-[#e9e5e5] text-xl font-normal font-['DM_Sans'] leading-[30px]"
+            >
+                Spolupráca bola na profesionálnej úrovni. K projektu
+                pristupovali<br />zodpovedne, dodržiavali termíny a nemali
+                problém s riešením<br />náročnejších konštrukčných požiadaviek.
+            </div>
+            <Image src={stars} alt={"5 hviezd"} class={"mt-7"} />
+        </div>
+
+        <div
+            class="recenzia min-w-[617px] w-[617px] lg:min-w-[710px] h-[314px] min-h-[314px] lg:w-[710px] bg-[#1e1e1e] flex flex-col px-4 py-8 gap-1"
+        >
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-4">
+                    <Image src={recenziePFP} alt={"recenzie fotka"} />
+
+                    <div
+                        class="relative justify-start text-[#e9e5e5] text-[32px] font-bold font-['DM_Sans'] leading-[48px]"
+                    >
+                        ING. LUKÁŠ RUSSIN
+                    </div>
+                </div>
+                <Image
+                    src={sipkaWhite}
+                    alt={"sipkaHore"}
+                    class={"w-[23px] h-[23px]"}
+                />
+            </div>
+            <div
+                class="mt-4 relative justify-start text-[#e9e5e5] text-xs font-light font-['DM_Sans'] leading-[18px]"
+            >
+                15.4.2022
+            </div>
+            <div
+                class="relative justify-start text-[#e9e5e5] text-xl font-normal font-['DM_Sans'] leading-[30px]"
+            >
+                Spolupráca bola na profesionálnej úrovni. K projektu
+                pristupovali<br />zodpovedne, dodržiavali termíny a nemali
+                problém s riešením<br />náročnejších konštrukčných požiadaviek.
+            </div>
+            <Image src={stars} alt={"5 hviezd"} class={"mt-7"} />
+        </div>
+
+        <div
+            class="recenzia min-w-[617px] w-[617px] lg:min-w-[710px] h-[314px] min-h-[314px] lg:w-[710px] bg-[#1e1e1e] flex flex-col px-4 py-8 gap-1"
+        >
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-4">
+                    <Image src={recenziePFP} alt={"recenzie fotka"} />
+
+                    <div
+                        class="relative justify-start text-[#e9e5e5] text-[32px] font-bold font-['DM_Sans'] leading-[48px]"
+                    >
+                        ING. LUKÁŠ RUSSIN
+                    </div>
+                </div>
+                <Image
+                    src={sipkaWhite}
+                    alt={"sipkaHore"}
+                    class={"w-[23px] h-[23px]"}
+                />
+            </div>
+            <div
+                class="mt-4 relative justify-start text-[#e9e5e5] text-xs font-light font-['DM_Sans'] leading-[18px]"
+            >
+                15.4.2022
+            </div>
+            <div
+                class="relative justify-start text-[#e9e5e5] text-xl font-normal font-['DM_Sans'] leading-[30px]"
+            >
+                Spolupráca bola na profesionálnej úrovni. K projektu
+                pristupovali<br />zodpovedne, dodržiavali termíny a nemali
+                problém s riešením<br />náročnejších konštrukčných požiadaviek.
+            </div>
+            <Image src={stars} alt={"5 hviezd"} class={"mt-7"} />
+        </div>
+        
+        <div
+            class="recenzia min-w-[617px] w-[617px] lg:min-w-[710px] h-[314px] min-h-[314px] lg:w-[710px] bg-[#1e1e1e] flex flex-col px-4 py-8 gap-1"
+        >
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-4">
+                    <Image src={recenziePFP} alt={"recenzie fotka"} />
+
+                    <div
+                        class="relative justify-start text-[#e9e5e5] text-[32px] font-bold font-['DM_Sans'] leading-[48px]"
+                    >
+                        ING. LUKÁŠ RUSSIN
+                    </div>
+                </div>
+                <Image
+                    src={sipkaWhite}
+                    alt={"sipkaHore"}
+                    class={"w-[23px] h-[23px]"}
+                />
+            </div>
+            <div
+                class="mt-4 relative justify-start text-[#e9e5e5] text-xs font-light font-['DM_Sans'] leading-[18px]"
+            >
+                15.4.2022
+            </div>
+            <div
+                class="relative justify-start text-[#e9e5e5] text-xl font-normal font-['DM_Sans'] leading-[30px]"
+            >
+                Spolupráca bola na profesionálnej úrovni. K projektu
+                pristupovali<br />zodpovedne, dodržiavali termíny a nemali
+                problém s riešením<br />náročnejších konštrukčných požiadaviek.
+            </div>
+            <Image src={stars} alt={"5 hviezd"} class={"mt-7"} />
+        </div>
+    </div>
+
+<!--mobile -->
+<div
+        class="scrollRecenzie ml-5 flex gap-4 md:hidden mt-1 whitespace-nowrap overflow-x-auto noScrollbar"
+    >
+        <div
+            class="recenzia min-w-[338px] w-[338px] md:min-w-[617px] md:w-[617px] lg:min-w-[710px] h-[222px] min-h-[222px] lg:w-[710px] bg-[#1e1e1e] flex flex-col px-4 py-8 gap-1"
+        >
+        
+            <div class="flex gap-4 ">
+
+                <Image src={recenziePFP} alt={"recenzie fotka"} class={"w-[48px] h-[48px] "}/>
+                <div class="flex flex-col -mt-4">
+                    <div
+                        class="relative justify-start text-[#e9e5e5] text-base md:text-[32px] font-bold font-['DM_Sans'] leading-[48px]"
+                    >
+                        ING. LUKÁŠ RUSSIN
+                    </div>
+
+                    <div class="flex justify-between items-center">
+                        <div
+                class=" relative justify-start text-[#e9e5e5] text-xs font-light font-['DM_Sans'] leading-[18px]"
+            >
+                15.4.2022
+            </div>
+                        <Image src={stars} alt={"5 hviezd"}  />
+                    </div>
+                    <div class="mt-4 w-[231px] relative justify-start text-[#e9e5e5] text-base font-medium font-['DM_Sans'] leading-normal">Spolupráca boa na <br>profesionálnej úrovni. K <br>projektu pristupovali<br/>zodpovedne, dodržiavali... </div>
+                </div>
+    
+               
+            </div>
+            
+            
+            
+        </div>
+
+        <div
+            class="recenzia min-w-[338px] w-[338px] md:min-w-[617px] md:w-[617px] lg:min-w-[710px] h-[222px] min-h-[222px] lg:w-[710px] bg-[#1e1e1e] flex flex-col px-4 py-8 gap-1"
+        >
+        
+            <div class="flex gap-4 ">
+
+                <Image src={recenziePFP} alt={"recenzie fotka"} class={"w-[48px] h-[48px] "}/>
+                <div class="flex flex-col -mt-4">
+                    <div
+                        class="relative justify-start text-[#e9e5e5] text-base md:text-[32px] font-bold font-['DM_Sans'] leading-[48px]"
+                    >
+                        ING. LUKÁŠ RUSSIN
+                    </div>
+
+                    <div class="flex justify-between items-center">
+                        <div
+                class=" relative justify-start text-[#e9e5e5] text-xs font-light font-['DM_Sans'] leading-[18px]"
+            >
+                15.4.2022
+            </div>
+                        <Image src={stars} alt={"5 hviezd"}  />
+                    </div>
+                    <div class="mt-4 w-[231px] relative justify-start text-[#e9e5e5] text-base font-medium font-['DM_Sans'] leading-normal">Spolupráca boa na <br>profesionálnej úrovni. K <br>projektu pristupovali<br/>zodpovedne, dodržiavali... </div>
+                </div>
+    
+               
+            </div>
+            
+            
+            
+        </div>
+
+        <div
+            class="recenzia min-w-[338px] w-[338px] md:min-w-[617px] md:w-[617px] lg:min-w-[710px] h-[222px] min-h-[222px] lg:w-[710px] bg-[#1e1e1e] flex flex-col px-4 py-8 gap-1"
+        >
+        
+            <div class="flex gap-4 ">
+
+                <Image src={recenziePFP} alt={"recenzie fotka"} class={"w-[48px] h-[48px] "}/>
+                <div class="flex flex-col -mt-4">
+                    <div
+                        class="relative justify-start text-[#e9e5e5] text-base md:text-[32px] font-bold font-['DM_Sans'] leading-[48px]"
+                    >
+                        ING. LUKÁŠ RUSSIN
+                    </div>
+
+                    <div class="flex justify-between items-center">
+                        <div
+                class=" relative justify-start text-[#e9e5e5] text-xs font-light font-['DM_Sans'] leading-[18px]"
+            >
+                15.4.2022
+            </div>
+                        <Image src={stars} alt={"5 hviezd"}  />
+                    </div>
+                    <div class="mt-4 w-[231px] relative justify-start text-[#e9e5e5] text-base font-medium font-['DM_Sans'] leading-normal">Spolupráca boa na <br>profesionálnej úrovni. K <br>projektu pristupovali<br/>zodpovedne, dodržiavali... </div>
+                </div>
+    
+               
+            </div>
+            
+            
+            
+        </div>
+        
+    </div>
+    <div class="gap-20 flex md:hidden mt-10 ml-5">
+        <Image src={sipkaLeft} alt={"sipkaLeft"} />
+        <Image src={sipkaRight} alt={"sipkaRight"} />
+    </div>
+
+    <div class="max-w-[88%] mx-auto px-4 2xl:max-w-[1500px]">
+        <div class="z-50" id="progressBar">
+            <div class="h-0.5 bg-[#E9E5E5] mt-12 lg:mt-20"></div>
+            <div class="h-[3px] bg-[#1E1E1E] -mt-0.5 progress left-0 hidden">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="newsletter bg-[#1e1e1e] lg:h-[425px] h-[660px]">
+    <div class="max-w-[88%] mx-auto px-4 2xl:max-w-[1500px]">
+        <form class="flex flex-col lg:flex-row justify-evenly pt-10 md:pt-20">
+            <div class="flex flex-col gap-6">
+                <div
+                    class="relative justify-start text-[#e9e5e5] text-4xl md:text-[56px] font-bold font-['DM_Sans'] uppercase leading-[54px] md:leading-[84px]"
+                >
+                    newsletter
+                </div>
+                <div
+                    class="relative lg:hidden justify-start text-white text-base md:text-xl font-light font-['DM_Sans'] leading-[30px]"
+                >
+                Každý mesiac vám prinesieme zaujímavé témy venujúce sa domom a trendom venujúce sa architektúre.
+                </div>
+                <div
+                    class="hidden lg:block relative justify-start text-white text-xl font-light font-['DM_Sans'] leading-[30px]"
+                >
+                Prihláste sa na odber nášho newslettera<br/>ktorý vám pomôže vytvoriť domov podľa <br/>vašich predstáv. 
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-6 lg:mt-0 mt-10">
+                <div
+                    class="h-16 relative bg-[#d9d9d9]/5 border border-white flex items-center"
+                >
+                    <input
+                        type="email"
+                        placeholder="Vaša e-mailová adresa"
+                        required
+                        class="w-full bg-transparent text-[#626262] text-xl font-medium font-['DM_Sans'] leading-[30px] border-none outline-none"
+                    />
+                </div>
+                <div class="flex gap-5">
+                    <div class="w-[30px] h-[30px] relative bg-white flex justify-center items-center">
+                        <Image src={done} alt="done" />
+                        
+                    </div>
+                    <div class="hidden md:block relative justify-start text-[#626262] text-base md:text-xl font-medium font-['DM_Sans'] leading-normal md:leading-[30px]">Súhlasím so spracovaním osobných údajov, za <br/>účelom zasielania noviniek o produktoch a <br/>službách LAVARCH.</div>
+                    <div class="w-[316px] md:hidden  relative justify-start text-[#626262] text-base font-medium font-['DM_Sans'] leading-normal">Súhlasím so spracovaním osobných údajov za účelom zasielania noviniek o produktoch a službách LAVARCH.</div>
+                </div>
+            </div>
+            <button
+                type="submit"
+                class="lg:mt-0 mt-10 w-fit  px-4 py-[5px] bg-[#e9e5e5]/30 h-[58px] inline-flex justify-center items-center gap-2.5"
+            >
+                <span
+                    class="text-[#e9e5e5] text-[25px] md:text-[32px] font-light uppercase leading-[37px] md:leading-[48px]"
+                    >prihlásiť sa</span
+                >
+            </button>
+        </form>
+    </div>
 </div>
 
 <style>
     .homepage {
-        background-image: url('../assets/homePage.png');
+        background-image: url("../assets/homePage.png");
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
-        
     }
+    .moreInfo {
+        display: none !important;
+    }
+
+    .noScrollbar {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+.noScrollbar::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+    
+</style>
