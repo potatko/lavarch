@@ -82,8 +82,8 @@ import interierObyvackaMobile from "../assets/interier-lavarch-obyvacka-mierova-
 </script>
 
 <div class="homepage h-screen -mt-22 md:-mt-34">
-    <div class="max-w-[88%] mx-auto px-4">
-        <div class="lg:pl-20">
+    <div class="max-w-[88%] 2xl:max-w-[1500px] mx-auto px-4">
+        <div class="lg:pl-20 ">
             <div
                 class="text-white text-[40px] leading-[60px] md:text-7xl lg:text-[90px] font-bold font-['DM Sans'] capitalize md:leading-[108px] lg:leading-[135px] pt-[200px] md:pt-[317px]"
             >
@@ -1060,4 +1060,29 @@ import interierObyvackaMobile from "../assets/interier-lavarch-obyvacka-mierova-
     display: none;  /* Safari and Chrome */
 }
     
+
+@keyframes scrollReviews {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+.reviews {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    
+}
+
+.review_items {
+    
+    animation: scrollReviews 35s linear infinite;
+}
+
+.reviews:hover .review_items {
+    animation-play-state: paused;
+}
 </style>
