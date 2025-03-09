@@ -47,7 +47,7 @@ buttons.forEach((button) => {
 
 <nav class={`${currentPage === 'index' ? 'bg-transparent' : 'bg-white'}  sticky top-0 z-50}`}>
 	<div
-		class="max-w-[100%] flex flex-wrap items-center justify-between mx-auto pt-4 p-0 md:p-4"
+		class="max-w-[100%] flex flex-wrap items-center justify-between mx-auto pt-4 p-0 md:p-4 z-100 relative"
 	>
 		<a href="#" class="flex items-center space-x-3 rtl:space-x-reverse mobileLogo" id="logo">
 			<Image src={logoSrc} alt="Logo" />
@@ -66,7 +66,7 @@ buttons.forEach((button) => {
 				<button
 					data-collapse-toggle="navbar-cta"
 					type="button"
-					class="inline-flex a1114fixlinks items-center p-2 -mr-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100  dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+					class="inline-flex a1114fixlinks items-center p-2 -mr-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100   "
 					aria-controls="navbar-cta"
 					aria-expanded="false"
                     onclick="openMenu()"
@@ -82,7 +82,7 @@ buttons.forEach((button) => {
 				class="items-center justify-between hidden w-full lg:flex md:w-auto md:order-1  centerMobile"
 				id="navbar-cta"
 			>
-			<ul class={`linksMobile flex flex-col font-medium p-4 md:p-0 mt-4  rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 ${currentPage === 'index' ? 'bg-transparent' : 'md:bg-white'} dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700 xl:ml-32`}>
+			<ul class={` linksMobile flex flex-col font-medium p-4 md:p-0 mt-4  rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 ${currentPage === 'index' ? 'bg-transparent' : 'md:bg-white'}  xl:ml-32`}>
 				<li>
 					<a href="/projekty" class={`block py-2 px-3 md:p-2 lg:p-4 d1114fixlinks ${currentPage === 'projekty' ? 'active-page' : 'hover-progress'}`} aria-current="page">
 						<div class={`${currentPage === 'index' ? 'text-white' : 'text-[#1E1E1E]'} linksMobileText font-dmSans text-[1.25rem] font-light leading-[1.875rem] uppercase`}>
@@ -123,7 +123,7 @@ buttons.forEach((button) => {
 	>
 	{title}
 	</div>
-	<div class={`sticky top-25 z-50 ${currentPage === 'index' ? 'hidden' : 'block'}`} id="progressBar">
+	<div class={`sticky top-20 z-50 ${currentPage === 'index' ? 'hidden' : 'block'}`} id="progressBar">
 		<div class="h-0.5 bg-[#E9E5E5] mt-4 lg:mt-20"></div>
 		<div class="h-[3px] bg-[#1E1E1E] -mt-0.5 progress left-0" ></div>
 	</div>
