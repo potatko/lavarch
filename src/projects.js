@@ -18,6 +18,7 @@ export const projects = [
         image: "/assets/rd-kb-013.png"
     },
     {
+        
         name: "Vila tugendhat",
         year: "2018",
         floors: 2,
@@ -25,6 +26,7 @@ export const projects = [
         area: 120,
         type: "individualny",
         image: "/assets/rd-kb-013.png"
+        
     },
     {
         name: "Vila tugendhat",
