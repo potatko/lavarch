@@ -13,6 +13,7 @@ const logoSrc = currentPage === 'index' ? LogoWhite : Logo;
 	var isMenuOpened = false;
 	
 	function openMenu() {
+		var stickyMenu = document.getElementById('section-nav');
 		isMenuOpened = !isMenuOpened;
 		console.log(isMenuOpened);
 		var cross = "cross.svg";
@@ -23,19 +24,39 @@ const logoSrc = currentPage === 'index' ? LogoWhite : Logo;
 		if (hamburgerIcon && logo) {
 			if (isMenuOpened) {
 				document.body.classList.add('overflow-hidden');
+				if (stickyMenu) {
+					stickyMenu.classList.add('hidden');
+				}
 				if (progressBar) {
-					progressBar.classList.add('hidden');
+					if (progressBar) {
+						if (progressBar) {
+							progressBar.classList.add('hidden');
+						}
+					}
 				}
 				logo.classList.add('hidden');
 				hamburgerIcon.src = cross;
 			} else {
 				document.body.classList.remove('overflow-hidden');
-				if (progressBar) {
-					progressBar.classList.remove('hidden');
+				if (stickyMenu) {
+					stickyMenu.classList.remove('hidden');
 				}
 				logo.classList.remove('hidden');
 				hamburgerIcon.src = hamburger;
+				if(window.location.href.includes('projekty')){
+					if (progressBar) {
+						progressBar.classList.add('hidden');
+					}
+				}
+				else
+				{
+					if (progressBar) {
+						progressBar.classList.remove('hidden');
+					}
+				}
+				
 			}
+			
 		}
 	}
 
@@ -72,7 +93,7 @@ buttons.forEach((button) => {
                     onclick="openMenu()"
 				>
 					<span class="sr-only">Open main menu</span>
-					<div id="hamburger">
+					<div id="hamburger" class="z-50 ">
 						<img src={hamburger.src} id="hamburger-icon" alt="Menu" />
 					</div>
 					
@@ -119,13 +140,13 @@ buttons.forEach((button) => {
 
 
 	<div
-	class="text-[#1E1E1E] navigationHeader font-dmSans text-[3.5rem] font-bold leading-[5.25rem] tracking-[-0.066rem] uppercase mt-8"
-	>
+	class={` ${currentPage === 'projekty' ? 'hidden' : 'block'} text-[#1E1E1E] navigationHeader font-dmSans text-[3.5rem]  font-bold leading-[5.25rem] tracking-[-0.066rem] uppercase mt-8`}
+	id="title">
 	{title}
 	</div>
-	<div class={`sticky top-17 md:top-20 z-50 ${currentPage === 'index' ? 'hidden' : 'block'}`} id="progressBar">
-		<div class="h-0.5 bg-[#E9E5E5] mt-4 lg:mt-20"></div>
-		<div class="h-[3px] bg-[#1E1E1E] -mt-0.5 progress left-0" ></div>
+	<div class={`sticky top-17 md:top-20 z-50 ${currentPage === 'index' || currentPage === 'projekty' ? 'hidden' : 'block'}`} id="progressBar">
+		<div class="h-[1px] bg-[#E9E5E5] mt-4 lg:mt-20"></div>
+		<div class="h-[2px] bg-[#1E1E1E] -mt-0.5 progress left-0" ></div>
 	</div>
 
 
@@ -197,8 +218,8 @@ buttons.forEach((button) => {
 		align-items: center;
 		flex-direction: column;
 		overflow: hidden;
-		margin-left: -3rem;
-		z-index: 100;
+		margin-left: -1rem;
+		z-index: 100 !important;
 	}
 
 	.linksMobileText{
@@ -307,6 +328,15 @@ text-transform: uppercase;
 		height: 27px;
 		margin-top: 0.7rem;
 	}
+
+	@media (max-width: 400px) {
+		.navigationHeader{
+			
+font-size: 30px;
+
+		}
+	
+}
 
 
 </style>

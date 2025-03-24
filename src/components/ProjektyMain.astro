@@ -1,0 +1,452 @@
+---
+import Logo from "../assets/hlavne_logo-transparent-black 1.png";
+import { Image } from "astro:assets";
+import slider from "../assets/slider.png";
+import { slide } from "astro:transitions";
+---
+
+<script>
+    declare global {
+        interface Window {
+            openFilterMenu: () => void;
+        }
+    }
+    import { projects } from "../projects";
+    const renderProjects = (selectedCategories: string | any[]) => {
+        const projectsContainer = document.getElementById("projectsContainer");
+        if (projectsContainer) {
+            projectsContainer.innerHTML = "";
+        }
+
+        const filteredProjects = selectedCategories.length === 0
+            ? projects
+            : projects.filter(project => selectedCategories.includes(project.type));
+
+        filteredProjects.forEach(project => {
+            const projectElement = document.createElement("div");
+            projectElement.className = "w-full md:max-w-[405px] md:min-w-auto md:w-full md:h-auto projekt flex flex-col gap-2 justify-center items-center";
+            projectElement.innerHTML = `
+                <img src="${project.image}" alt="${project.name}" />
+                <div class=" text-center justify-start text-[#1e1e1e] text-xl font-medium font-['DM_Sans'] uppercase leading-[30px]">
+                    ${project.name}
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class=" justify-start text-[#626262] text-xs font-light font-['DM_Sans'] capitalize leading-[18px] tracking-widest">
+                        ${project.floors} pODLAŽIE
+                    </div>
+                    <div class="w-1.5 h-1.5  bg-[#626262]"></div>
+                    <div class=" justify-start text-[#626262] text-xs font-light font-['DM_Sans'] capitalize leading-[18px] tracking-widest">
+                        ${project.rooms} iZBY
+                    </div>
+                    <div class="w-1.5 h-1.5  bg-[#626262]"></div>
+                    <div class=" justify-start text-[#626262] text-xs font-light font-['DM_Sans'] capitalize leading-[18px] tracking-widest">
+                        ${project.area} m²
+                    </div>
+                </div>
+                <div class="w-[66.89px]  justify-start text-[#626262] text-[10px] font-light font-['DM_Sans'] uppercase leading-[15px] tracking-[4px]">
+                    ${project.type}
+                </div>
+            `;
+            if (projectsContainer) {
+                projectsContainer.appendChild(projectElement);
+            }
+        });
+    };
+
+    window.addEventListener("load", function(event) {
+        const dropdownToggle = document.querySelector('[data-dropdown-toggle="dropdown"]');
+        if (dropdownToggle) {
+            (dropdownToggle as HTMLElement).click();
+        }
+
+        const categoryCheckboxes = document.querySelectorAll(".custom-checkbox");
+        const selectedCategories: string[] = [];
+
+        categoryCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener("change", () => {
+                selectedCategories.length = 0;
+                categoryCheckboxes.forEach(checkbox => {
+                    if ((checkbox as HTMLInputElement).checked) {
+                        selectedCategories.push(checkbox.id);
+                    }
+                });
+                renderProjects(selectedCategories);
+            });
+        });
+
+        renderProjects(selectedCategories);
+    });
+
+    var isMenuOpened = false;
+
+    function openFilterMenu() {
+        isMenuOpened = !isMenuOpened;
+        console.log(isMenuOpened);
+        var cross = "cross.svg";
+        var hamburger = "slider.png";
+        const hamburgerIcon = document.getElementById('filterLogo') as HTMLImageElement;
+        const logo = document.getElementById('logo');
+        const filterHeader = document.getElementById('filtreHeader');
+        const progressBar = document.getElementById('progressBarFiltre');
+        const mobilefilters = document.getElementById('mobile-filters');
+        const filterHeaderMobile = document.getElementById('filterHeaderMobile');
+        if (hamburgerIcon && logo) {
+            if (isMenuOpened) {
+                document.body.classList.add('overflow-hidden');
+                
+                logo.classList.add('hidden');
+                hamburgerIcon.src = cross;
+                if (progressBar) {
+                    progressBar.classList.add('hidden');
+                }
+                if (filterHeader) {
+                    filterHeader.innerText = "FILTER";
+                    filterHeader.classList.add('z-200');
+                }
+                if (mobilefilters) {
+                    mobilefilters.classList.remove('hidden');
+                }
+                if(filterHeaderMobile){
+                    filterHeaderMobile.classList.remove('sticky');
+                    filterHeaderMobile.classList.add('fixed');
+                    filterHeaderMobile.classList.remove('top-13');
+                    filterHeaderMobile.classList.add('gap-[60vw]');
+                    filterHeaderMobile.classList.add('sm:gap-[70vw]');
+                }
+                hamburgerIcon.src = cross;
+            } else {
+                document.body.classList.remove('overflow-hidden');
+                
+                logo.classList.remove('hidden');
+                hamburgerIcon.src = hamburger;
+                if (progressBar) {
+                    progressBar.classList.remove('hidden');
+                }
+                if (filterHeader) {
+                    filterHeader.innerText = "VŠETKY PROJEKTY";
+                    filterHeader.classList.remove('z-200');
+                }
+                if (mobilefilters) {
+                    mobilefilters.classList.add('hidden');
+                }
+                if(filterHeaderMobile){
+                    filterHeaderMobile.classList.add('sticky');
+                    filterHeaderMobile.classList.remove('fixed');
+                    filterHeaderMobile.classList.add('top-13');
+                    filterHeaderMobile.classList.remove('gap-[60vw]');
+                    filterHeaderMobile.classList.remove('sm:gap-[70vw]');
+                }
+                hamburgerIcon.src = hamburger;
+            }
+        }
+    }
+
+    window.openFilterMenu = openFilterMenu;
+</script>
+<div
+	class={`lg:block hidden  text-[#1E1E1E] navigationHeader font-dmSans text-[3.5rem] font-bold leading-[5.25rem] tracking-[-0.066rem] uppercase mt-8`}
+	>
+	VŠETKY PROJEKTY
+	</div>
+    <div class={` top-18 md:top-23.5 z-50 bg-white `} id="progressBarFiltre">
+		<div class="h-[1px] bg-[#E9E5E5] mt-4 lg:mt-20"></div>
+		<div class="h-[2px] bg-[#1E1E1E] -mt-0.5 progress left-0" ></div>
+	</div>
+    <div class="flex justify-between items-center mt-8 sticky top-13 z-200 bg-white h-16 " id="filterHeaderMobile">
+        <div
+	class={`lg:hidden block  text-[#1E1E1E] navigationHeader text-stone-900 text-2xl font-bold font-['DM_Sans'] uppercase leading-9 `}
+	id="filtreHeader">
+	VŠETKY PROJEKTY
+	</div>
+    <button onclick="openFilterMenu()" id="openFilterMenu" class="lg:hidden  block cursor-pointer z-200">
+        <img src={slider.src} id={"filterLogo"}  alt={"filter"} class={"w-[25px] h-[25px]"}/>
+    </button>
+    
+    </div>
+    
+<!--MOBILE FILTERS -->
+<div id="mobile-filters" class=" mobile-filters hidden w-full h-[100vh] bg-white fixed top-0 left-0 z-50">
+    <div class="flex items-center mt-30 mx-auto w-[85%] justify-between">
+        <button id="dropdownDefaultm1" data-dropdown-toggle="dropdownm1"
+            class="w-full text-black font-medium rounded-lg text-sm inline-flex items-center justify-between text-stone-900 text-xl font-medium font-['DM_Sans'] leading-loose"
+            type="button">
+            Typ projektu
+            <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+        </button>
+
+        <!-- Dropdown menu -->
+        <div id="dropdownm1" class="  hidden mx-auto w-[85%] p-3 bg-stone-200 shadow z-200 ">
+            <ul class="space-y-2 text-sm " aria-labelledby="dropdownDefaultm1">
+                <li class="flex items-center">
+                    <input id="interier" type="checkbox" value="" class="custom-checkbox" />
+                    <label for="interier" class="ml-2 text-stone-900 text-xl font-medium font-['DM_Sans'] leading-loose">
+                        Interíer
+                    </label>
+                </li>
+                <li class="flex items-center">
+                    <input id="katalog" type="checkbox" value="" class="custom-checkbox" />
+                    <label for="katalog" class="ml-2 text-stone-900 text-xl font-medium font-['DM_Sans'] leading-loose">
+                        Katalóg
+                    </label>
+                </li>
+                <li class="flex items-center">
+                    <input id="individualny" type="checkbox" value="" class="custom-checkbox" />
+                    <label for="individualny" class="ml-2 text-stone-900 text-xl font-medium font-['DM_Sans'] leading-loose">
+                        Individuálny
+                    </label>
+                </li>
+            </ul>
+        </div>
+        
+    </div>
+    <div class="mx-auto w-[85%] h-px bg-stone-900"></div>
+    
+    
+</div>
+
+<!--DESKTOP FILTERS -->
+<div class="hidden mt-15 gap-3 lg:flex">
+    <div class="flex items-center justify-center">
+        <button id="dropdownDefault" data-dropdown-toggle="dropdown"
+            class="w-55 text-black font-medium rounded-lg text-sm inline-flex items-center justify-between text-stone-900 text-xl font-medium font-['DM_Sans'] leading-loose"
+            type="button">
+            Typ projektu
+            <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+        </button>
+
+        <!-- Dropdown menu -->
+        <div id="dropdown" class="z-10 hidden w-56 p-3 bg-stone-200 shadow ">
+            <ul class="space-y-2 text-sm " aria-labelledby="dropdownDefault">
+                <li class="flex items-center">
+                    <input id="interier" type="checkbox" value="" class="custom-checkbox" />
+                    <label for="interier" class="ml-2 text-stone-900 text-xl font-medium font-['DM_Sans'] leading-loose">
+                        Interíer
+                    </label>
+                </li>
+                <li class="flex items-center">
+                    <input id="katalog" type="checkbox" value="" class="custom-checkbox" />
+                    <label for="katalog" class="ml-2 text-stone-900 text-xl font-medium font-['DM_Sans'] leading-loose">
+                        Katalóg
+                    </label>
+                </li>
+                <li class="flex items-center">
+                    <input id="individualny" type="checkbox" value="" class="custom-checkbox" />
+                    <label for="individualny" class="ml-2 text-stone-900 text-xl font-medium font-['DM_Sans'] leading-loose">
+                        Individuálny
+                    </label>
+                </li>
+            </ul>
+        </div>
+        <div class="w-0 h-8 outline-1 outline-black ml-2.5"></div>
+    </div>
+    <div class="flex items-center justify-center">
+        <button id="dropdownDefault2" data-dropdown-toggle="dropdown2"
+            class="w-55 text-black font-medium rounded-lg text-sm inline-flex items-center justify-between text-stone-900 text-xl font-medium font-['DM_Sans'] leading-loose"
+            type="button">
+            Plocha
+            <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+        </button>
+
+        <!-- Dropdown menu -->
+        <div id="dropdown2" class="z-10 hidden w-56 p-3 bg-stone-200 shadow ">
+            <ul class="space-y-2 text-sm " aria-labelledby="dropdownDefault2">
+                <li class="flex items-center">
+                    <input id="apple" type="checkbox" value="" class="custom-checkbox" />
+                    <label for="apple" class="ml-2 text-stone-900 text-xl font-medium font-['DM_Sans'] leading-loose">
+                        Apple (56)
+                    </label>
+                </li>
+                <li class="flex items-center">
+                    <input id="fitbit" type="checkbox" value="" class="custom-checkbox" />
+                    <label for="fitbit" class="ml-2 text-stone-900 text-xl font-medium font-['DM_Sans'] leading-loose">
+                        Fitbit (56)
+                    </label>
+                </li>
+            </ul>
+        </div>
+        <div class="w-0 h-8 outline-1 outline-black ml-2.5"></div>
+    </div>
+    <div class="flex items-center justify-center">
+        <button id="dropdownDefault3" data-dropdown-toggle="dropdown3"
+            class="w-55 text-black font-medium rounded-lg text-sm inline-flex items-center justify-between text-stone-900 text-xl font-medium font-['DM_Sans'] leading-loose"
+            type="button">
+            Izby
+            <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+        </button>
+
+        <!-- Dropdown menu -->
+        <div id="dropdown3" class="z-10 hidden w-56 p-3 bg-stone-200 shadow ">
+            <ul class="space-y-2 text-sm " aria-labelledby="dropdownDefault3">
+                <li class="flex items-center">
+                    <input id="apple" type="checkbox" value="" class="custom-checkbox" />
+                    <label for="apple" class="ml-2 text-stone-900 text-xl font-medium font-['DM_Sans'] leading-loose">
+                        Apple (56)
+                    </label>
+                </li>
+                <li class="flex items-center">
+                    <input id="fitbit" type="checkbox" value="" class="custom-checkbox" />
+                    <label for="fitbit" class="ml-2 text-stone-900 text-xl font-medium font-['DM_Sans'] leading-loose">
+                        Fitbit (56)
+                    </label>
+                </li>
+            </ul>
+        </div>
+        
+        
+        <div class="w-0 h-8 outline-1 outline-black ml-2.5"></div>
+        
+
+    </div>
+    <div class="flex items-center justify-center">
+        <button id="dropdownDefault4" data-dropdown-toggle="dropdown4"
+            class="w-55 text-black font-medium rounded-lg text-sm inline-flex items-center justify-between text-stone-900 text-xl font-medium font-['DM_Sans'] leading-loose"
+            type="button">
+            Typ projektu
+            <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+        </button>
+
+        <!-- Dropdown menu -->
+        <div id="dropdown4" class="z-10 hidden w-56 p-3 bg-stone-200 shadow ">
+            <ul class="space-y-2 text-sm " aria-labelledby="dropdownDefault4">
+                <li class="flex items-center">
+                    <input id="interier" type="checkbox" value="" class="custom-checkbox" />
+                    <label for="interier" class="ml-2 text-stone-900 text-xl font-medium font-['DM_Sans'] leading-loose">
+                        Interíer
+                    </label>
+                </li>
+                <li class="flex items-center">
+                    <input id="katalog" type="checkbox" value="" class="custom-checkbox" />
+                    <label for="katalog" class="ml-2 text-stone-900 text-xl font-medium font-['DM_Sans'] leading-loose">
+                        Katalóg
+                    </label>
+                </li>
+                <li class="flex items-center">
+                    <input id="individualny" type="checkbox" value="" class="custom-checkbox" />
+                    <label for="individualny" class="ml-2 text-stone-900 text-xl font-medium font-['DM_Sans'] leading-loose">
+                        Individuálny
+                    </label>
+                </li>
+            </ul>
+        </div>
+        
+    </div>
+</div>
+<div class="w-[950px] h-px bg-stone-900 mt-2.5 lg:block hidden"></div>
+
+<div class="justify-center lg:justify-start projekty flex mt-13 max-w-full flex-wrap gap-y-10 noScrollbar" id="projectsContainer">
+    
+</div>
+
+<style>
+    .custom-checkbox {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .custom-checkbox + label {
+        position: relative;
+        padding-left: 25px;
+        cursor: pointer;
+        display: inline-block;
+    }
+
+    .custom-checkbox + label::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 10px;
+        width: 18px;
+        height: 18px;
+        border: 2px solid #52525b;
+        background-color: transparent;
+        
+    }
+
+    .custom-checkbox:checked + label::before {
+        background-color: #1c1917;
+    }
+
+    .custom-checkbox:checked + label::after {
+        content: "";
+        position: absolute;
+        left: 6px;
+        top: 12px;
+        width: 6px;
+        height: 10px;
+        border: solid #fff;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
+
+    .noScrollbar {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+.noScrollbar::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+@keyframes scaleProgress {
+  0% {
+    transform: scaleX(0.1);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.progress {
+  animation-timeline: scroll(root);
+  animation-name: scaleProgress;
+  animation-duration: auto;
+  animation-timing-function: linear;
+  transform-origin: 0 50%;
+}
+
+@keyframes hoverProgress {
+  0% {
+    transform: scaleX(0.1);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.hover-progress {
+        position: relative;
+        display: inline-block;
+    }
+
+    .hover-progress::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 1rem; /* Adjust based on your underline offset */
+        width: 0;
+        height: 2px; /* Adjust based on your underline thickness */
+        background-color: #1E1E1E;
+        transform: translateX(-50%);
+        transform-origin: center;
+        transition: width 0.3s ease-in-out;
+    }
+
+    .hover-progress:hover::after {
+        width: 100%;
+    }
+</style>
